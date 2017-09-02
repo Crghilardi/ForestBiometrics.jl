@@ -37,3 +37,28 @@ ForestBiometrics.jl uses Julia's [metaprogramming abilities](https://docs.julial
 
 There is also a helper function `UserHD()` that a user can use to define their own equation as a string.
     UserDefHD("4.5+x^2^b[1]")
+
+
+## Calculating the volume of an individual tree
+
+ForestBiometrics has functions to calculate log volumes using a variety of scaling rules
+
+      doyle_volume(small end diameter, log length)
+
+calculates the doyle volume
+
+      scribner_volume(small end diameter, log length)
+
+calculates the scribner volume
+
+      international_volume(small end diameter, log length)
+
+calculates the volume using international rule
+
+## Calculating limiting distance for a variable radius plot
+
+While this may not be useful in a programming context, it is a relatively simple function and may be useful for demonstration purposes.
+
+    limiting_distance(baf, dbh, horizontal distance)
+
+    
