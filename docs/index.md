@@ -6,21 +6,37 @@ As a result there is a large amount of formulas and parameter sets based on regi
 
 In forest inventories, measuring heights on all trees may not be possible so formulas are used to fill in missing data.
 
-# `@HeightDub`
+# `@HeightDub(model,coefficients,dataframe,species,diameter)`
 
-ForestBiometrics.jl uses Julia's [metaprogramming abilities](https://docs.julialang.org/en/release-0.6/manual/metaprogramming/) to build the function at runtime allowing a user to change both model form and parameters. 
+where `model` is an equation form stored as an anonymous function
 
-As it is built now, species specific coefficients are stored in a dictionary in the key value form of:
+    @HeightDub(Wyckoff...)
 
-`String: Array{Float64}`
+`coefficients` is a dictionary of species specific equation parameters in the form of 
 
-e.g.
-
+    String: Array{Float64}
 
     Dict{String,Array{Float64}}(
     "WP"=> [5.19988	-9.26718],
     "WL"=>[4.97407	-6.78347],
     "DF"=>[4.81519	-7.29306] )
+     
+If a user wanted to change model parameters, they can redefine them as needed independent of model form
 
-If a user wanted to change model parameters, they can redefine them as needed. 
+`dataframe` is a DataFrame where the species and diameter for each tree record are stored
+
+`species` is the name of the column containing the species information in the dataframe expressed as a symbol e.g. `:Species` 
+
+and `diameter` is the name of the column in the dataframe  containing the tree record diameter expressed as a symbol e.g. `:DBH`
+
+ForestBiometrics.jl uses Julia's [metaprogramming abilities](https://docs.julialang.org/en/release-0.6/manual/metaprogramming/) to build the function at runtime allowing a user to change both model form and parameters. 
+
+
+
+
+
+
+
+
+
 
