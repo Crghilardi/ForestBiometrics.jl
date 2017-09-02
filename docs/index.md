@@ -1,4 +1,6 @@
-# Getting Started
+# Functionality
+
+This package was inspired by its R counterpart, the [lmfor package] (https://CRAN.R-project.org/package=lmfor) with the addition of equations from the western US. For more info on lmfor, please see (http://cs.uef.fi/~lamehtat/rcodes.htm)
 
 ## Calculating missing tree heights using a height diameter equation
 Height-diameter equations are widespread in forestry and have been the subject of extensive research over the past decades.
