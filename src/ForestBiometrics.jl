@@ -15,7 +15,7 @@ include("VolumeEquations.jl")
 export LimitingDistance,
         scribner_volume,
         international_volume,
-        doyle_volume,
+        doyle_volume
 
 export @HeightDub
 
