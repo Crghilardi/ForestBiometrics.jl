@@ -48,7 +48,3 @@ function UserDefHD(x::String)
 eval(parse("(x,b)->"*x))
 end
 UserDefHD("4.5+x^b[1]^b[2]")
-
-export UserDefHD, HeightDub
-
-end #end module
