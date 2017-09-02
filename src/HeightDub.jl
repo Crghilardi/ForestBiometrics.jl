@@ -52,7 +52,6 @@ Coeffs=Dict{String,Array{Float64}}(
 "OH"=>[4.44210	-6.54050],
 "OS"=>[4.77951	-9.31743] )
 
-
 macro HeightDub(func,lookup_table,df,species,diameter)
   quote
     out=Float64[]
@@ -70,12 +69,6 @@ macro HeightDub(func,lookup_table,df,species,diameter)
   end
 end
 
-#example usage
-#@HeightDub(Wyckoff,Coeffs,df)
-
 function UserDefHD(x::String)
 parse("(x,b)->"*x)
 end
-
-#example usage
-#UserDefHD("x^2+4.5")
