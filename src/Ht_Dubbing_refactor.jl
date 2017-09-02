@@ -27,7 +27,7 @@ Coeffs=Dict{String,Array{Float64}}(
 
 #2 parameter equations
 #mainly from the LMFOR R package
-
+Wyckoff=(x,b)->4.5+exp(b[1]+(b[2]/(x+1)))
 Naslund=(x,b)->4.5+(x^2/(b[1]+b[2]*x)^2)
 Curtis=(x,b)->4.5+b[1]*(x/1+x)^b[2])
 Michailoff=(x,b)-> 4.5+b[1]*exp(-b[2]*x^(-1))
