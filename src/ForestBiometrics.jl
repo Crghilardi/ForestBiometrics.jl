@@ -1,3 +1,5 @@
+#__precompile__(true) needed?
+
 module ForestBiometrics
 
 #dependencies
@@ -9,16 +11,13 @@ include("HeightDub.jl")
 include("LimitingDistance.jl")
 include("VolumeEquations.jl")
 
-#LimitingDistance
-export LimitingDistance
 
-#VolumeEquations
-export scribner_volume
-export international_volume
-export doyle_volume
+export LimitingDistance,
+        scribner_volume,
+        international_volume,
+        doyle_volume,
 
-#HeightDub
-export HeightDub
+export @HeightDub
 
 end
 #end module
