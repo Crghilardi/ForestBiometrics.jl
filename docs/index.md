@@ -27,9 +27,9 @@ If a user wanted to change model parameters, they can redefine them as needed in
 
 `dataframe` is a DataFrame where the species and diameter for each tree record are stored
 
-`species` is the name of the column containing the species information in the dataframe expressed as a symbol e.g. `:Species` 
+`species` is the name of the column containing the species information in the DataFrame expressed as a symbol e.g. `:Species` 
 
-and `diameter` is the name of the column in the dataframe  containing the tree record diameter expressed as a symbol e.g. `:DBH`
+and `diameter` is the name of the column in the DataFrame  containing the tree record diameter expressed as a symbol e.g. `:DBH`
 
 ForestBiometrics.jl uses Julia's [metaprogramming abilities](https://docs.julialang.org/en/release-0.6/manual/metaprogramming/) to build the function at runtime allowing a user to change both model form and parameters. 
 
