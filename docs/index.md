@@ -9,8 +9,10 @@ In forest inventories, measuring heights on all trees may not be possible so for
 # `@HeightDub(model,coefficients,dataframe,species,diameter)`
 
 where `model` is an equation form stored as an anonymous function
+    
+    Wyckoff=(x,b)->4.5+exp(b[1]+(b[2]/(x+1))
 
-    @HeightDub(Wyckoff...)
+    @HeightDub(Wyckoff,...)
 
 `coefficients` is a dictionary of species specific equation parameters in the form of 
 
