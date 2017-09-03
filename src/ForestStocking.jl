@@ -1,14 +1,12 @@
-function sdi(tpa::Float64,qmd::Float64)
+function sdi(tpa,qmd)
     sdi=tpa*(qmd/10.0)^1.605
 end
-
-sdi1=sdi(200.0,12.3)
 
 
 ###FIX EVERYTHING BELOW THIS LINE###
 # Function to calculate percent stocking
 # from basal area per acre and tree per acre
-function stock_pct(ba::Float64,tpa::Float64,spp::AbstractString="upland.oak")
+function stock_pct(ba::Float64,tpa::Float64,spp::String="upland.oak")
   if spp == "upland.oak"
      value = [-0.00507,0.01698,0.00307]
   elseif spp == "northern.red.oak"

@@ -10,13 +10,16 @@ using DataFrames
 include("HeightDub.jl")
 include("LimitingDistance.jl")
 include("VolumeEquations.jl")
+include("EquilibriumMoistureContent.jl")
+include("ForestStocking.jl")
 
-
-export LimitingDistance,
+export limiting_distance,
         scribner_volume,
         international_volume,
         doyle_volume,
-        UserDefHD
+        UserDefHD,
+        emc,
+        sdi
 
 export @HeightDub
 
