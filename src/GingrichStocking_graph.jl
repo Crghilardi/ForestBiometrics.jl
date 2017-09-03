@@ -1,5 +1,3 @@
-#Written by: Casey Ghilardi
-#Github: crghilardi
 #Gingrich stocking chart
 
 using Gadfly
@@ -86,6 +84,7 @@ return DataFrame(TPA=TPA,BA=BA,QMD=QMD)
 end
 
 df3=DataFrame(TPA=Float64[],BA=Float64[],QMD=Int[])
+
 for i in dia
   append!(df3,make_bline(i))
 end
@@ -107,9 +106,4 @@ layer(df2,x=:TPA,y=:BA,color=:STK,Geom.line),
     )
 
 
-pwd()
-homedir()
-
-cd("$(homedir())/Desktop")
-
-draw(PDF("myplot.pdf", 9inch, 6.5inch), myplot)
+#draw(PNG("myplot.png", 9inch, 6.5inch), myplot)
