@@ -1,3 +1,8 @@
+
+[![Build Status](https://travis-ci.org/Crghilardi/ForestBiometrics.jl.svg?branch=master)](https://travis-ci.org/Crghilardi/ForestBiometrics.jl)
+[![Build status](https://ci.appveyor.com/api/projects/status/9iuvdt0j0mw6au0k?svg=true)](https://ci.appveyor.com/project/Crghilardi/ForestBiometrics-jl)
+[![Coverage Status](https://coveralls.io/repos/github/Crghilardi/ForestBiometrics.jl/badge.svg?branch=master)](https://coveralls.io/github/Crghilardi/ForestBiometrics.jl?branch=master)
+
 # ForestBiometrics.jl
 A library for various forest mensuration and biometrics functions in Julia
 
