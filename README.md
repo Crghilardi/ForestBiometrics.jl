@@ -22,7 +22,8 @@ This is not yet registered as an official Julia package (yet.... working hard on
 To install a local copy use the `Pkg.clone()` functionality 
 
 
-    Pkg.clone("https://github.com/crghilari/ForestBiometrics.jl")
+    Pkg.clone("https://github.com/crghilardi/ForestBiometrics.jl")
+    
     
 If you are interested in this package and would like to contribute, please submit an issue or pull request. 
-As previously mentioned, it is my hope that this package will also be used to examine Julia in the cotext of forestry specific use cases.
+As previously mentioned, it is my hope that this package will not only provide functionality but also be used to examine Julia in the cotext of forestry specific use cases.
