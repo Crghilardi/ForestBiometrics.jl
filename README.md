@@ -1,6 +1,7 @@
-
 [![Build Status](https://travis-ci.org/Crghilardi/ForestBiometrics.jl.svg?branch=master)](https://travis-ci.org/Crghilardi/ForestBiometrics.jl)
-[![Build status](https://ci.appveyor.com/api/projects/status/9iuvdt0j0mw6au0k?svg=true)](https://ci.appveyor.com/project/Crghilardi/ForestBiometrics-jl)
+
+[![Build status](https://ci.appveyor.com/api/projects/status/ltey9skqhs40let0/branch/master?svg=true)](https://ci.appveyor.com/project/Crghilardi/forestbiometrics-jl/branch/master)
+
 [![Coverage Status](https://coveralls.io/repos/github/Crghilardi/ForestBiometrics.jl/badge.svg?branch=master)](https://coveralls.io/github/Crghilardi/ForestBiometrics.jl?branch=master)
 
 # ForestBiometrics.jl
@@ -13,3 +14,15 @@ This package was inspired by its R counterpart, the [lmfor package](https://CRAN
 It is my hope that the package not only ports existing functionality from other langauges, but also showcases the abilities of Julia as a programming languages and how concepts like multiple dispatch and metaprogramming can be used to solve domain-specific problems.
 
 [Documentation](https://crghilardi.github.io/ForestBiometrics.jl/)
+
+## Installation
+
+This is not yet registered as an official Julia package (yet.... working hard on changing that!)
+
+To install a local copy use the `Pkg.clone()` functionality 
+
+
+    Pkg.clone("https://github.com/crghilari/ForestBiometrics.jl")
+    
+If you are interested in this package and would like to contribute, please submit an issue or pull request. 
+As previously mentioned, it is my hope that this package will also be used to examine Julia in the cotext of forestry specific use cases.
