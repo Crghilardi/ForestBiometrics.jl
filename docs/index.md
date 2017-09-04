@@ -77,4 +77,8 @@ Jack D Cohen, John E. Deeming. GTR PSW-82**
 
 will return the Stand Density Index calculated as 
 
-    sdi = tpa * \left( \frac{qmd}{10} \right)^{1.605}
+```
+$$
+sdi = tpa * \left( \frac{qmd}{10} \right)^{1.605}
+$$
+```
