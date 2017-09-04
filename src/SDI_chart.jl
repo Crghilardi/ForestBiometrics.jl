@@ -1,5 +1,5 @@
-##Reineke SDI graph
-function sdi_chart(sdi::Int64)
+##Reineke SDI chart
+
 using Gadfly
 using Formatting
 sdi=sdi
@@ -20,12 +20,14 @@ fmt = "%d"
 sprintf1( fmt,e^1.6094379124341003)
 
 d-> sprintf1( fmt,e^d)
-myplot=plot(
-    layer(x=[25], y=[4],Geom.point),
+
+function sdi_chart(tpa,qmd)
+plot(
+    layer(x=tpa, y=qmd,Geom.point),
     layer(x=maxline,y=diarng,Geom.line),
     layer(x=comp_mortline,y=diarng,Geom.line),
     layer(x=crown_closeline,y=diarng,Geom.line),
-    Scale.x_log(labels=d-> sprintf1( fmt,e^d)),
+    Scale.x_log(),
     Scale.y_log(),
     Guide.xticks(ticks=myxticks),
     Guide.yticks(ticks=myyticks),
@@ -34,7 +36,3 @@ myplot=plot(
     )
 
 end #end function
-
-using Cairo
-
-draw(PNG("RDI_chart_example.png", 6.5inch, 9inch), myplot)

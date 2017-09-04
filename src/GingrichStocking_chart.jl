@@ -1,25 +1,27 @@
-#Gingrich stocking chart
+#Gingrich stocking chart calculated using the original upland oak parameters
+#for more information see:http://oak.snr.missouri.edu/silviculture/tools/gingrich.html
 
 using Gadfly
 using DataFrames
 
+#define parameters
 a =[-0.0507, 0.1698, 0.0317]
 b =[0.0175, 0.205, 0.06]
 
 ba_ticks=collect(0:20:160)
 tpa_ticks=collect(0:50:450)
 
-#QMD
+#QMD lines
 dia = [7, 8, 10, 12, 14, 16, 18, 20, 22]
 #stocking percent horizontal lines
 stk_percent=collect(20:10:110)
 
+#function to convert between artihmetic and quadratic mean
 function amd_convert(qmd)
   amd=-0.259+0.973*qmd
 end
 
-#test - should return 6.552
-#amd_convert(7)
+
 
 #function to draw stocking lines...needs work
 function make_stklines(stk,dia)
@@ -37,9 +39,6 @@ function make_stklines(stk,dia)
   end
 return DataFrame(TPA=TPA,BA=BA,STK=STK)  #,QMD=QMD
 end
-
-#try map?
-#map((stk,dia,a)->(1*stk*10)/(a[1]+a[2]*amd_convert(dia)+a[3]*dia^2),)
 
 df2=make_stklines(stk_percent,dia)
 
@@ -83,18 +82,18 @@ function make_bline(qmd)
 return DataFrame(TPA=TPA,BA=BA,QMD=QMD)
 end
 
+##
+
 df3=DataFrame(TPA=Float64[],BA=Float64[],QMD=Int[])
 
 for i in dia
   append!(df3,make_bline(i))
 end
 
-
-
 #base plot with axes
-#using color=:QMD works, but group=:QMD throws error
-myplot=plot(
-layer(x=[0],y=[0],Geom.point),
+function gingrich_chart(tpa,basal_area)
+plot(
+layer(x=tpa,y=basal_area,Geom.point),
 layer(df,x=:TPA,y=:BA,color=:QMD,Geom.line),
 layer(df2,x=:TPA,y=:BA,color=:STK,Geom.line),
 #layer(df3,x=:TPA,y=:BA,color=:QMD,Geom.line),
@@ -104,6 +103,4 @@ layer(df2,x=:TPA,y=:BA,color=:STK,Geom.line),
     Guide.ylabel("Basal Area (sq. ft./acre)",orientation=:vertical),
     Theme(key_position = :none) # remove legend
     )
-
-
-#draw(PNG("myplot.png", 9inch, 6.5inch), myplot)
+end #end function

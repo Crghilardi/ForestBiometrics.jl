@@ -7,21 +7,27 @@ using DataFrames
 
 #end dependencies
 
-include("HeightDub.jl")
-include("LimitingDistance.jl")
-include("VolumeEquations.jl")
+#Alphabetic order
+
 include("EquilibriumMoistureContent.jl")
 include("ForestStocking.jl")
+include("GingrichStocking_chart.jl")
+include("HeightDub.jl")
+include("LimitingDistance.jl")
+include("SDI_chart")
+include("VolumeEquations.jl")
 
-export limiting_distance,
-        scribner_volume,
+export emc
+export sdi
+export gingrich_chart
+export @HeightDub, UserDefHD
+
+export limiting_distance
+
+export sdi_chart
+
+export  scribner_volume,
         international_volume,
-        doyle_volume,
-        UserDefHD,
-        emc,
-        sdi
-
-export @HeightDub
-
+        doyle_volume
 end
 #end module
