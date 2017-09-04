@@ -12,7 +12,9 @@ This package was inspired by its R counterpart, the [lmfor package](https://CRAN
 
 It is my hope that the package not only ports existing functionality from other langauges, but also showcases the abilities of Julia as a programming language and how concepts like multiple dispatch and metaprogramming can be used to solve domain-specific problems.
 
-[Documentation](https://crghilardi.github.io/ForestBiometrics.jl/)
+## Documentation
+
+[Documentation available here](https://crghilardi.github.io/ForestBiometrics.jl/)
 
 ## Installation
 
