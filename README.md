@@ -18,11 +18,22 @@ It is my hope that the package not only ports existing functionality from other 
 
 This is not yet registered as an official Julia package (yet.... working hard on changing that!)
 
-To install a local copy use the `Pkg.clone()` functionality 
+To install a local copy use the `Pkg.clone()` functionality
 
 
     Pkg.clone("https://github.com/crghilardi/ForestBiometrics.jl")
-    
-    
-If you are interested in this package and would like to contribute, please submit an issue or pull request. 
+
+
+If you are interested in this package and would like to contribute, please submit an issue or pull request.
 As previously mentioned, it is my hope that this package will not only provide functionality but also be used to examine Julia in the context of forestry specific use cases.
+
+
+## example outputs
+
+Gingrich stocking guides
+
+<img src="https://raw.githubusercontent.com/Crghilardi/ForestBiometrics.jl/master/examples/Gingrich_plot_example.png" align="middle"  />
+
+SDI chart with lines at 100%, 55% and 35% max SDI
+
+<img src="https://raw.githubusercontent.com/Crghilardi/ForestBiometrics.jl/master/examples/SDI_plot_example.png" align="middle"  />
