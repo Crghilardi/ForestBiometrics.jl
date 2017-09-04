@@ -4,7 +4,7 @@
 [![GitHub version](https://img.shields.io/github/release/Crghilardi/ForestBiometrics.svg)]()
 
 # ForestBiometrics.jl
-A library for various forest mensuration and biometrics functions in Julia
+A package for various forest mensuration and biometrics functions in Julia
 
 
 ForestBiometrics.jl is a package for working with forest measurements data and growth and yield modeling.
@@ -32,8 +32,8 @@ As previously mentioned, it is my hope that this package will not only provide f
 
 Gingrich stocking guides
 
-<img src="https://raw.githubusercontent.com/Crghilardi/ForestBiometrics.jl/master/examples/Gingrich_plot_example.png" align="middle"  />
+<img src="https://raw.githubusercontent.com/Crghilardi/ForestBiometrics.jl/master/examples/Gingrich_chart_example.png" align="middle"  />
 
 SDI chart with lines at 100%, 55% and 35% max SDI
 
-<img src="https://raw.githubusercontent.com/Crghilardi/ForestBiometrics.jl/master/examples/SDI_plot_example.png" align="middle"  />
+<img src="https://raw.githubusercontent.com/Crghilardi/ForestBiometrics.jl/master/examples/SDI_chart_example.png" align="middle"  />
