@@ -1,9 +1,12 @@
 #Gingrich stocking chart calculated using the original upland oak parameters
 #for more information see:http://oak.snr.missouri.edu/silviculture/tools/gingrich.html
 
-using Gadfly
+#using Gadfly - to be removed
+using Plots
+using StatPlots; PyPlot
 using DataFrames
 
+function gingrich_chart(tpa_in,basal_area_in)
 #define parameters
 a =[-0.0507, 0.1698, 0.0317]
 b =[0.0175, 0.205, 0.06]
@@ -17,11 +20,10 @@ dia = [7, 8, 10, 12, 14, 16, 18, 20, 22]
 stk_percent=collect(20:10:110)
 
 #function to convert between artihmetic and quadratic mean
+#need to add this to test?
 function amd_convert(qmd)
   amd=-0.259+0.973*qmd
 end
-
-
 
 #function to draw stocking lines...needs work
 function make_stklines(stk,dia)
@@ -37,7 +39,7 @@ function make_stklines(stk,dia)
       push!(STK,j)
     end
   end
-return DataFrame(TPA=TPA,BA=BA,STK=STK)  #,QMD=QMD
+return DataFrame(TPA=TPA,BA=BA,STK=STK)
 end
 
 df2=make_stklines(stk_percent,dia)
@@ -63,10 +65,8 @@ for i in dia
   append!(df,make_lines(i))
 end
 
-
 #equation for A-line
 A_line=make_stklines(100,dia)
-
 
 function make_bline(qmd)
   BA=Float64[]
@@ -82,25 +82,30 @@ function make_bline(qmd)
 return DataFrame(TPA=TPA,BA=BA,QMD=QMD)
 end
 
-##
-
 df3=DataFrame(TPA=Float64[],BA=Float64[],QMD=Int[])
-
 for i in dia
   append!(df3,make_bline(i))
 end
-
-#base plot with axes
-function gingrich_chart(tpa,basal_area)
-plot(
-layer(x=tpa,y=basal_area,Geom.point),
-layer(df,x=:TPA,y=:BA,color=:QMD,Geom.line),
-layer(df2,x=:TPA,y=:BA,color=:STK,Geom.line),
-#layer(df3,x=:TPA,y=:BA,color=:QMD,Geom.line),
-    Guide.yticks(ticks=ba_ticks),
-    Guide.xticks(ticks=tpa_ticks),
-    Guide.xlabel("Trees per acre"),
-    Guide.ylabel("Basal Area (sq. ft./acre)",orientation=:vertical),
-    Theme(key_position = :none) # remove legend
-    )
+plot(df,:TPA,:BA,group=:QMD,color=:black)
+plot!(df2,:TPA,:BA,group=:STK,color=:black,
+xlabel="Trees Per Acre",
+ylabel="Basal Area (sq ft./acre)",
+xticks=collect(0:50:450),
+yticks=collect(0:20:200),
+legend=false)
+scatter!((tpa_in,basal_area_in))
 end #end function
+
+
+#Gadfly- to be removed
+# plot(
+# layer(x=tpa_in,y=basal_area_in,Geom.point),
+# layer(df,x=:TPA,y=:BA,color=:QMD,Geom.line),
+# layer(df2,x=:TPA,y=:BA,color=:STK,Geom.line),
+# #layer(df3,x=:TPA,y=:BA,color=:QMD,Geom.line),
+#     Guide.yticks(ticks=ba_ticks),
+#     Guide.xticks(ticks=tpa_ticks),
+#     Guide.xlabel("Trees per acre"),
+#     Guide.ylabel("Basal Area (sq. ft./acre)",orientation=:vertical),
+#     Theme(key_position = :none) # remove legend
+#     )

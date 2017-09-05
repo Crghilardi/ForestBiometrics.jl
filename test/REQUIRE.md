@@ -1,1 +1,3 @@
 DataFrames
+Plots
+StatPlots

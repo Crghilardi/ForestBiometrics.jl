@@ -1,4 +1,4 @@
 using Base.Test
 using ForestBiometrics
 
-@test typeof(myplot) == Gadfly.Plot
+@test typeof(sdi_chart(230,500,8)) == Plots.Plot{Plots.PyPlotBackend}
