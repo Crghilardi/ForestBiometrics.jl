@@ -1,7 +1,7 @@
-#using Base.Test
+using Base.Test
 #using DataFrames
 #using StatPlots; pyplot()
-#using ForestBiometrics
+using ForestBiometrics
 #no idea if i should use this here or in individual scripts?
 
 @testset "EquilibriumMoistureContent" begin include("EquilibriumMoistureContent_test.jl") end
