@@ -1,5 +1,6 @@
 using DataFrames #is this needed here?
 using Base.Test
+using ForestBiometrics
 
 import @HeightDub
 
