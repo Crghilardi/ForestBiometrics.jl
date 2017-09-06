@@ -30,7 +30,7 @@ If you are interested in this package and would like to contribute, please submi
 As previously mentioned, it is my hope that this package will not only provide functionality but also be used to examine Julia in the context of forestry specific use cases.
 
 
-## example outputs
+## Example outputs
 
 Gingrich stocking guides
 
