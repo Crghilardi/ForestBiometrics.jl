@@ -4,6 +4,8 @@ module ForestBiometrics
 
 #dependencies
 using DataFrames
+using Plots
+using StatPlots
 
 #end dependencies
 
@@ -14,7 +16,7 @@ include("ForestStocking.jl")
 include("GingrichStocking_chart.jl")
 include("HeightDub.jl")
 include("LimitingDistance.jl")
-include("SDI_chart")
+include("SDI_chart.jl")
 include("VolumeEquations.jl")
 
 export emc

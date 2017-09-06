@@ -1,5 +1,6 @@
 using Base.Test
-using StatsPlots; PyPlot
+using Plots
+using StatPlots
 using ForestBiometrics
 
 #@test amd_convert(7) == 6.552 #how to test this since its in function?
