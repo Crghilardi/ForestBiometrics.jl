@@ -9,16 +9,6 @@ using StatPlots
 
 #end dependencies
 
-#Alphabetic order
-
-include("EquilibriumMoistureContent.jl")
-include("ForestStocking.jl")
-include("GingrichStocking_chart.jl")
-include("HeightDub.jl")
-include("LimitingDistance.jl")
-include("SDI_chart.jl")
-include("VolumeEquations.jl")
-
 export emc
 export sdi
 export gingrich_chart
@@ -31,5 +21,16 @@ export sdi_chart
 export  scribner_volume,
         international_volume,
         doyle_volume
+
+#Alphabetic order
+
+include("EquilibriumMoistureContent.jl")
+include("ForestStocking.jl")
+include("GingrichStocking_chart.jl")
+include("HeightDub.jl")
+include("LimitingDistance.jl")
+include("SDI_chart.jl")
+include("VolumeEquations.jl")
+
 end
 #end module
