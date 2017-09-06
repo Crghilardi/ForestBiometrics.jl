@@ -1,6 +1,6 @@
 ##Reineke SDI chart
 #using Gadfly
-using Plots; PyPlot
+using Plots; pyplot()
 function sdi_chart(max_sdi,tpa,qmd)
 sdi=max_sdi
 diarng=collect(1:20)
@@ -23,19 +23,5 @@ plot!(crown_closeline,diarng)
 plot!(maxline,diarng)
 scatter!((tpa,qmd))
 end #end function
-typeof(sdi_chart(230,500,8))== Plots.Plot{Plots.PyPlotBackend}
 
-
-##Gadfly version - to be removed
-# myplot=plot(
-#     layer(x=tpa, y=qmd,Geom.point),
-#     layer(x=maxline,y=diarng,Geom.line),
-#     layer(x=comp_mortline,y=diarng,Geom.line),
-#     layer(x=crown_closeline,y=diarng,Geom.line),
-#     Scale.x_log(),
-#     Scale.y_log(),
-#     Guide.xticks(ticks=myxticks),
-#     Guide.yticks(ticks=myyticks),
-#     Guide.XLabel("Trees per acre"),
-#     Guide.YLabel("Quadratic Mean Diameter")
-#     )
+sdi_chart(230,500,8)

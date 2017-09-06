@@ -3,7 +3,7 @@
 
 #using Gadfly - to be removed
 using Plots
-using StatPlots; PyPlot
+using StatPlots; pyplot()
 using DataFrames
 
 function gingrich_chart(tpa_in,basal_area_in)
@@ -96,16 +96,4 @@ legend=false)
 scatter!((tpa_in,basal_area_in))
 end #end function
 
-
-#Gadfly- to be removed
-# plot(
-# layer(x=tpa_in,y=basal_area_in,Geom.point),
-# layer(df,x=:TPA,y=:BA,color=:QMD,Geom.line),
-# layer(df2,x=:TPA,y=:BA,color=:STK,Geom.line),
-# #layer(df3,x=:TPA,y=:BA,color=:QMD,Geom.line),
-#     Guide.yticks(ticks=ba_ticks),
-#     Guide.xticks(ticks=tpa_ticks),
-#     Guide.xlabel("Trees per acre"),
-#     Guide.ylabel("Basal Area (sq. ft./acre)",orientation=:vertical),
-#     Theme(key_position = :none) # remove legend
-#     )
+gingrich_chart(400,80)
