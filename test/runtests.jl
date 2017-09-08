@@ -1,6 +1,6 @@
 using Base.Test
-using DataFrames
-using StatPlots; pyplot()
+#using DataFrames
+#using StatPlots; pyplot()
 using ForestBiometrics
 #no idea if i should use this here or in individual scripts?
 
