@@ -3,12 +3,20 @@ using ForestBiometrics
 
 makedocs(
         modules =[ForestBiometrics],
-        doctest=false)
+        sitename= "ForestBiometrics.jl"
+        format = :html
+        doctest=false,
+        pages = Any["Home" => "index.md"])
 
 deploydocs(deps = Deps.pip(
             "pygments",
             "mkdocs",
             "mkdocs-material",
             "python-markdown-math"),
-   repo = "github.com/Crghilardi/ForestBiometrics.jl.git"
+            target = "site",
+            branch = "gh-pages",
+            latest = "master",
+            julia="0.6",
+            repo = "github.com/Crghilardi/ForestBiometrics.jl.git",
+            target = "build"
    )
