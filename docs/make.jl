@@ -1,7 +1,8 @@
 using Documenter
 using ForestBiometrics
 
-makedocs(module =[ForestBiometrics],
+makedocs(
+        modules =[ForestBiometrics],
         doctest=false)
 
 deploydocs(deps = nothing,
