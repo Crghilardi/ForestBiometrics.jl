@@ -1,3 +1,12 @@
+struct HeightDiameter <: Function
+formula::Function
+b
+end
+
+function calculate_height(p::HeightDiameter,x,y)
+    return(p.formula(x,get(p.b,y,0)))
+end
+
 ##Named Equations
 #2 parameter equations, mainly from the LMFOR R package
 #sorted alphabetically
@@ -26,24 +35,3 @@ Ratkowsky=(x,b)->4.5+b[1]*exp(-b[2]/(x+b[3]))
 Sibbesen=(x,b)->4.5+b[1]*x^(b[2]*x^(-b[3]))
 Weibull=(x,b)->4.5+b[1]*(1-exp(-b[2]*x^b[3]))
 ###
-
-macro HeightDub(func,lookup_table,df,species,diameter)
-  quote
-    out=Float64[]
-    #out2=[]
-    for i in 1:size($df,1)
-      diam=$df[$diameter][i]
-      coeff=get($lookup_table,$df[$species][i],0)
-      #push!(out,diam)
-      #push!(out2,[diam,coeff])
-      y=($func)(diam,coeff)
-      push!(out,y)
-    end
-    return out
-    #return out2
-  end
-end
-
-function UserDefHD(x::String)
-eval(parse("(x,b)->"*x))
-end

@@ -12,7 +12,8 @@ using StatPlots
 export emc
 export sdi
 export gingrich_chart
-export @HeightDub, UserDefHD
+export HeightDiameter, calculate_height
+#export @HeightDub, UserDefHD
 
 export limiting_distance
 
