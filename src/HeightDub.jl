@@ -3,8 +3,8 @@ formula::Function
 b
 end
 
-function calculate_height(p::HeightDiameter,x,y)
-    return(p.formula(x,get(p.b,y,0)))
+function calculate_height(HD::HeightDiameter,dbh,spp)
+    return(HD.formula(dbh,get(HD.b,spp,0)))
 end
 
 ##Named Equations

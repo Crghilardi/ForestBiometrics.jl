@@ -8,36 +8,64 @@ As a result there is a large amount of formulas and parameter sets based on regi
 
 In forest inventories, measuring heights on all trees may not be possible so formulas are used to fill in missing data.
 
-# `@HeightDub(model,coefficients,dataframe,species,diameter)`
+# Types
 
-where `model` is an equation form stored as an anonymous function
+ForestBiometrics creates a type `HeightDiameter` that holds an equation form and its parameters.
 
-    Wyckoff=(x,b)->4.5+exp(b[1]+(b[2]/(x+1))
+    struct HeightDiameter <: Function
+    formula::Function
+    b
+    end
 
-    @HeightDub(Wyckoff,...)
+`formula` can be one of the pre-named equation forms such as Wyckoff, Korf, etc.
 
-`coefficients` is a dictionary of species specific equation parameters in the form of
+    Wyckoff=(x,b)->4.5+exp(b[1]+(b[2]/(x+1)) #defined in HeightDub.jl
 
-    String: Array{Float64}
+`b` is a dictionary of species specific equation parameters in the form of
 
-    Dict{String,Array{Float64}}(
+    String: Array{Float64} #species specific coefficients stored as dictionary
+
+    coeffs =Dict{String,Array{Float64}}(
     "WP"=> [5.19988	-9.26718],
     "WL"=>[4.97407	-6.78347],
     "DF"=>[4.81519	-7.29306] )
 
-If a user wanted to change model parameters, they can redefine them as needed independent of model form
+    HD = HeightDiameter(Wyckoff,coeffs)
 
-`dataframe` is a DataFrame where the species and diameter for each tree record are stored
+If a user wanted to change model parameters, they can redefine them as needed independent of model form or change both equation form and associated parameters.
 
-`species` is the name of the column containing the species information in the DataFrame expressed as a symbol e.g. `:Species`
+Pre-defined equation forms available include:
+`#latex equations to be added`
+`#2 parameter equation forms, mainly from LMFOR package`
+Curtis,
+Michailoff,
+Meyer,
+Micment,
+Micment2,
+Naslund,
+Naslund2,
+Naslund3,
+Naslund4,
+Power,
+Wyckoff
 
-and `diameter` is the name of the column in the DataFrame  containing the tree record diameter expressed as a symbol e.g. `:DBH`
+`3 parameter equations, mainly from LMFOR R package`
+Chapman,
+Gompertz,
+HossfeldIV,
+Korf,
+Logistic,
+Monserud,
+Prodan,
+Ratkowsky,
+Sibbesen,
+Weibull
 
-ForestBiometrics.jl uses Julia's [metaprogramming abilities](https://docs.julialang.org/en/release-0.6/manual/metaprogramming/) to build the function at runtime allowing a user to change both model form and parameters.
+#functions
 
-There is also a helper function `UserHD()` that a user can use to define their own equation as a string.
-    UserDefHD("4.5+x^2^b[1]")
+`calculate_height(params::HeightDiameter,dbh,species)`
 
+This takes a HeightDiameter type and applies the function given a species and dbh.
 
 ## Calculating the volume of an individual tree
 

@@ -14,7 +14,6 @@ export sdi
 export gingrich_chart
 export HeightDiameter, calculate_height
 
-#how to export premade equation forms?
 export Curtis,
 Michailoff,
 Meyer,
@@ -39,7 +38,6 @@ Prodan,
 Ratkowsky,
 Sibbesen,
 Weibull
-#export @HeightDub, UserDefHD
 
 export limiting_distance
 
