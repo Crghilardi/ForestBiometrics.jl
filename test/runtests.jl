@@ -9,8 +9,8 @@ using ForestBiometrics
 @testset "ForestStocking" begin include("ForestStocking_test.jl") end
 
 @testset "GingrichStocking_chart" begin include("GingrichStocking_chart_test.jl") end
-#macro not working right, fix and revisit
-#@testset "HeightDub" begin include("HeightDub_test.jl") end
+
+@testset "HeightDub" begin include("HeightDub_test.jl") end
 
 @testset "LimitingDistance" begin include("LimitingDistance_test.jl") end
 
