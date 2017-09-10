@@ -67,7 +67,8 @@ wyckoff_test=[
 77.22661356
 92.79168745
 86.208065]
-#Wyckoff=(x,b)->4.5+exp(b[1]+(b[2]/(x+1)))
+
+Wyckoff=(x,b)->4.5+exp(b[1]+(b[2]/(x+1)))
 p=HeightDiameter(Wyckoff,FVS_IE)
 wyckoff_out=[calculate_height(p,df[:DBH][i],df[:Species][i]) for i in 1:size(df,1) ]
 
@@ -111,7 +112,6 @@ p2=HeightDiameter((x,b)->4.5+x^b[1]^b[2],FVS_IE)
 
 user_eq_out=[calculate_height(p,df[:DBH][i],df[:Species][i]) for i in 1:size(df,1) ]
 
-@testset HeightDub_tests begin
-    @test isapprox(wyckoff_out, wyckoff_test)
-    @test isapprox(user_eq_out, user_eq_test)
-end
+
+@test isapprox(wyckoff_out, wyckoff_test)
+@test isapprox(user_eq_out, user_eq_test)
