@@ -2,7 +2,6 @@ using DataFrames #is this needed here?
 using Base.Test
 using ForestBiometrics
 
-import @HeightDub
 
 datapath = joinpath(@__DIR__, "..", "data")
 df=readtable(joinpath(datapath, "IEsubset_CSV.csv"))
@@ -72,6 +71,10 @@ wyckoff_test=[
 4.52005389024830
 4.52038063854719]
 
+p=HeightDiameter(Wyckoff,FVS_IE)
+
+wykcoff_out=[calcuate_height(p,df[:DBH][i],df[:Species][i]) for i in 1:size(df,2) ]
+
 user_eq_test=[
 5.50000110437066
 5.50000077727861
@@ -108,9 +111,14 @@ user_eq_test=[
 5.50003190202163
 5.50002959423972]
 
+p2=HeightDiameter((x,b)->4.5+x^b[1]^b[2],FVS_IE)
+
+user_eq_out=[calcuate_height(p,df[:DBH][i],df[:Species][i]) for i in 1:size(df,2) ]
 
 @testset HeightDub_tests begin
-    @test_approx_eq @HeightDub(Wyckoff,FVS_IE,df,:Species,:DBH) ≈
-    @test user_eq=UserDefHD("4.5+x^b[1]^b[2]") == (x,b)->4.5+x^b[1]^b[2]
-    @HeightDub(user_eq,FVS_IE,df,:Species,:DBH) ==
+    @test_approx_eq wyckoff_out ≈ wyckoff_test
+    @test_approx_eq user_eq_out ≈ user_eq_test
+    #@test_approx_eq @HeightDub(Wyckoff,FVS_IE,df,:Species,:DBH) ≈
+    #@test user_eq=UserDefHD("4.5+x^b[1]^b[2]") == (x,b)->4.5+x^b[1]^b[2]
+    #@HeightDub(user_eq,FVS_IE,df,:Species,:DBH) ==
 end
