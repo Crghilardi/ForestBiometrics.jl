@@ -1,7 +1,9 @@
 site_name:        ForestBiometrics.jl
-repo_url:         https://github.com/Crghilardi/ForestBiometrics.jl
 site_description: Description...
 site_author:      Casey Ghilardi
+
+repo_name:        Github
+repo_url:         https://github.com/Crghilardi/ForestBiometrics.jl
 
 theme: readthedocs
 

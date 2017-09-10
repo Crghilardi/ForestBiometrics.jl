@@ -1,8 +1,9 @@
-using Documenter, ForestBiometrics
+using Documenter
+using ForestBiometrics
 
 makedocs(module =[ForestBiometrics],
         doctest=false)
 
-deploydocs(
-   repo = "github.com/Crghilardi/ForestBiometrics.jl.git",
-   deps = nothing)
+deploydocs(deps = nothing,
+   repo = "github.com/Crghilardi/ForestBiometrics.jl.git"
+   )
