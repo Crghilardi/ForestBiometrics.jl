@@ -68,7 +68,7 @@ wyckoff_test=[
 92.79168745
 86.208065]
 
-Wyckoff=(x,b)->4.5+exp(b[1]+(b[2]/(x+1)))
+#Wyckoff=(x,b)->4.5+exp(b[1]+(b[2]/(x+1)))
 p=HeightDiameter(Wyckoff,FVS_IE)
 wyckoff_out=[calculate_height(p,df[:DBH][i],df[:Species][i]) for i in 1:size(df,1) ]
 
