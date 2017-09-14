@@ -11,6 +11,13 @@ branches:
     only:
       - master
 
+## uncomment the following lines to override the default test script
+script:
+  - julia -e 'cd(Pkg.dir("ForestBiometrics")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
+  - julia -e 'ENV["PYTHON"] = ""; Pkg.add("PyPlot"); Pkg.build("PyPlot")'
+  - julia -e 'Pkg.clone(pwd()); Pkg.build("ForestBiometrics"); Pkg.test("ForestBiometrics"; coverage=true)'
+
+
 after_success:
     - julia -e 'cd(Pkg.dir("ForestBiometrics")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(process_folder())'
     - julia -e 'cd(Pkg.dir("ForestBiometrics")); Pkg.add("Coverage"); using Coverage; Codecov.submit(process_folder())'
@@ -35,8 +42,3 @@ matrix:
 #    - gfortran
 #before_script: # homebrew for mac
 #  - if [ $TRAVIS_OS_NAME = osx ]; then brew install gcc; fi
-
-## uncomment the following lines to override the default test script
-script:
-  - julia -e 'ENV["PYTHON"] = ""; Pkg.add("PyPlot"); Pkg.build("PyPlot")'
-  - julia -e 'Pkg.clone(pwd()); Pkg.build("ForestBiometrics"); Pkg.test("ForestBiometrics"; coverage=true)'
