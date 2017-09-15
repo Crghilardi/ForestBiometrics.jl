@@ -4,9 +4,10 @@ using ForestBiometrics
 makedocs(
         modules =[ForestBiometrics],
         sitename= "ForestBiometrics.jl",
-        format = :html,
+        #format = :html,
         doctest=false,
-        pages = Any["Home" => "index.md"])
+        pages = Any["Home" => "index.md"]
+        )
 
  deploydocs(deps = Deps.pip(
             "pygments",
