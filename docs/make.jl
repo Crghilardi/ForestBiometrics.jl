@@ -8,8 +8,7 @@ makedocs(
         doctest=false,
         pages = Any["Home" => "index.md"])
 
- deploydocs(deps = nothing
-            target = "site",
+ deploydocs(deps = nothing,
             branch = "gh-pages",
             latest = "master",
             julia="0.6",
