@@ -8,7 +8,11 @@ makedocs(
         doctest=false,
         pages = Any["Home" => "index.md"])
 
- deploydocs(deps = nothing,
+ deploydocs(deps = Deps.pip(
+            "pygments",
+            "mkdocs",
+            "mkdocs-material",
+            "python-markdown-math"),
             branch = "gh-pages",
             latest = "master",
             julia="0.6",
