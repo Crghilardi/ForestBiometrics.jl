@@ -1,3 +1,4 @@
 DataFrames
 Plots
 StatPlots
+PyPlot
