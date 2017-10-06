@@ -10,7 +10,7 @@ In forest inventories, measuring heights on all trees may not be possible so for
 
 # Types
 
-ForestBiometrics creates a type `HeightDiameter` that holds an equation form and its parameters.
+ForestBiometrics creates a type `HeightDiameter` that holds an equation form and its parameters for estimating a tree height given a diameter at a fixed height(usually 4.5 feet).
 
     struct HeightDiameter <: Function
     formula::Function
