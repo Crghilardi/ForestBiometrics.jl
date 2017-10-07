@@ -19,6 +19,10 @@ script:
   - julia -e 'ENV["PYTHON"] = ""; Pkg.add("PyPlot"); Pkg.build("PyPlot")'
   - julia -e 'Pkg.clone(pwd()); Pkg.build("ForestBiometrics"); Pkg.test("ForestBiometrics"; coverage=true)'
 
+before_install:
+  - julia -e 'Pkg.add("PyCall"); ENV["PYTHON"]=""; Pkg.build("PyCall")'
+  - julia -e 'Pkg.add("Conda"); using Conda; Conda.add("matplotlib");'
+
 after_success:
     - julia -e 'cd(Pkg.dir("ForestBiometrics")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(process_folder())'
     - julia -e 'cd(Pkg.dir("ForestBiometrics")); Pkg.add("Coverage"); using Coverage; Codecov.submit(process_folder())'
