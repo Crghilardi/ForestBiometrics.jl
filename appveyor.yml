@@ -42,7 +42,6 @@ build_script:
 # Need to convert from shallow to complete for Pkg.clone to work
   - IF EXIST .git\shallow (git fetch --unshallow)
   - C:\projects\julia\bin\julia -e "versioninfo();
-  - C:\projects\julia\bin\julia -e "ENV["MPLBACKEND"]="qt4agg";
   - C:\projects\julia\bin\julia -e "Pkg.add(\"DataFrames\");
   - C:\projects\julia\bin\julia -e "Pkg.add(\"Plots\");
   - C:\projects\julia\bin\julia -e "Pkg.add(\"PyPlot\");
