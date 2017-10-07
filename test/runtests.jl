@@ -1,3 +1,4 @@
+ENV["MPLBACKEND"]="qt4agg"
 using Base.Test
 using DataFrames
 using StatPlots; pyplot()
