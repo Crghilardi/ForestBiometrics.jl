@@ -1,7 +1,6 @@
 #Gingrich stocking chart calculated using the original upland oak parameters
 #for more information see:http://oak.snr.missouri.edu/silviculture/tools/gingrich.html
 
-#using Gadfly - to be removed
 using Plots
 using StatPlots; pyplot()
 using DataFrames
