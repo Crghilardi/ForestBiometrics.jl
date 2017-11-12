@@ -74,7 +74,10 @@ Pre-defined equation forms available include:
 `#latex equations to be added` `#2 parameter equation forms, mainly from LMFOR package`
 
 
-`Curtis`, `Michailoff`, `Meyer`, `Micment`, `Micment2`, `Naslund`, `Naslund2`, `Naslund3`, `Naslund4`, `Power`, and `Wyckoff`
+`Curtis` $ht(diameter)=dbh + \frac{dbh^2}{(b1+b2*dbh)^2}$,
+
+
+`Michailoff` $ht(diameter)=dbh + b1e^b2dbh^-1$, `Meyer`, `Micment`, `Micment2`, `Naslund`, `Naslund2`, `Naslund3`, `Naslund4`, `Power`, and `Wyckoff`
 
 
 `3 parameter equations, mainly from LMFOR R package`
