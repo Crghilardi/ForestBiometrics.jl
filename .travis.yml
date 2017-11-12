@@ -14,7 +14,7 @@ branches:
 
 ## uncomment the following lines to override the default test script
 script:
-  - julia -e 'cd(Pkg.dir("ForestBiometrics"))'
+  #- julia -e 'cd(Pkg.dir("ForestBiometrics"))'
   - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
   #- julia -e 'ENV["PYTHON"] = ""; Pkg.add("PyPlot"); Pkg.build("PyPlot")'
   - julia -e 'Pkg.add("GR")'
