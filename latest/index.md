@@ -7,6 +7,14 @@
 This package was inspired by its R counterpart, the [lmfor package](https://CRAN.R-project.org/package=lmfor) with the addition of equations from the western US. For more info on lmfor, please see http://cs.uef.fi/~lamehtat/rcodes.htm
 
 
+<a id='Constants-1'></a>
+
+## Constants
+
+
+This package exports a `const K = 0.005454154`to convert between diameter squared in square inches to square feet and `KMETRIC = 0.00007854` to convert diameter squared in centimeters to square meters when using metric.
+
+
 <a id='Calculating-missing-tree-heights-using-a-height-diameter-equation-1'></a>
 
 ## Calculating missing tree heights using a height diameter equation
@@ -60,13 +68,24 @@ HD = HeightDiameter(Wyckoff,coeffs)
 If a user wanted to change model parameters, they can redefine them as needed independent of model form or change both equation form and associated parameters.
 
 
-Pre-defined equation forms available include: `#latex equations to be added` `#2 parameter equation forms, mainly from LMFOR package` Curtis, Michailoff, Meyer, Micment, Micment2, Naslund, Naslund2, Naslund3, Naslund4, Power, Wyckoff
+Pre-defined equation forms available include:
 
 
-`3 parameter equations, mainly from LMFOR R package` Chapman, Gompertz, HossfeldIV, Korf, Logistic, Monserud, Prodan, Ratkowsky, Sibbesen, Weibull
+`#latex equations to be added` `#2 parameter equation forms, mainly from LMFOR package`
 
 
-#functions
+`Curtis`, `Michailoff`, `Meyer`, `Micment`, `Micment2`, `Naslund`, `Naslund2`, `Naslund3`, `Naslund4`, `Power`, and `Wyckoff`
+
+
+`3 parameter equations, mainly from LMFOR R package`
+
+
+`Chapman`, `Gompertz`, `HossfeldIV`, `Korf`, `Logistic`, `Monserud`, `Prodan`, `Ratkowsky`, `Sibbesen`, `Weibull`
+
+
+<a id='functions-1'></a>
+
+# functions
 
 
 `calculate_height(params::HeightDiameter,dbh,species)`
@@ -78,6 +97,9 @@ This takes a HeightDiameter type and applies the function given a species and db
 <a id='Calculating-the-volume-of-an-individual-tree-1'></a>
 
 ## Calculating the volume of an individual tree
+
+
+**This functionality is under active development and may change**
 
 
 ForestBiometrics has functions to calculate log volumes using a variety of scaling rules
@@ -105,6 +127,24 @@ calculates the scribner volume
 
 
 calculates the volume using international rule
+
+
+In addition, we introduce two abstract types, `VolumeEquation`, and `MerchSpecs`.
+
+
+MerchSpecs is a super type to allow for merchandizing specifications to be stored and referenced by product and some common ones have been predefined.
+
+
+```
+  type Sawtimber<:MerchSpecs
+  std_length
+  trim
+  min_length
+  max_length
+  min_dib
+  end
+  Sawtimber(16.0,0.5,8.0,20.0,6.0)
+```
 
 
 <a id='Calculating-limiting-distance-for-a-variable-radius-plot-1'></a>
@@ -143,8 +183,10 @@ sdi(tpa,qmd)
 ```
 
 
-will return the Stand Density Index calculated as
+will return the Stand Density Index calculated as:
 
 
-\( sdi = tpa * (\frac{qmd}{10})^{1.605} \)
+$$
+sdi = tpa * (\frac{qmd}{10})^{1.605}
+$$
 
