@@ -1,6 +1,7 @@
 ##Reineke SDI chart
 #using Gadfly
-using Plots; pyplot()
+using Plots; gr()
+
 function sdi_chart(max_sdi,tpa,qmd)
 sdi=max_sdi
 diarng=collect(1:20)

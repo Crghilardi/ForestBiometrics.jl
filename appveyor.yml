@@ -43,8 +43,9 @@ build_script:
   - IF EXIST .git\shallow (git fetch --unshallow)
   - C:\projects\julia\bin\julia -e "versioninfo();
   - C:\projects\julia\bin\julia -e "Pkg.add(\"DataFrames\");
-  - C:\projects\julia\bin\julia -e "Pkg.add(\"Plots\");
-  - C:\projects\julia\bin\julia -e "Pkg.add(\"PyPlot\");Pkg.build(\"PyCall\");
+  - C:\projects\julia\bin\julia -e "Pkg.add(\"GR\");
+  #- C:\projects\julia\bin\julia -e "Pkg.add(\"Plots\");
+  #- C:\projects\julia\bin\julia -e "Pkg.add(\"PyPlot\");Pkg.build(\"PyCall\");
       Pkg.clone(pwd(), \"ForestBiometrics\"); Pkg.build(\"ForestBiometrics\")"
 
 test_script:

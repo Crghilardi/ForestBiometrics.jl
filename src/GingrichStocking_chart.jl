@@ -2,7 +2,7 @@
 #for more information see:http://oak.snr.missouri.edu/silviculture/tools/gingrich.html
 
 using Plots
-using StatPlots; pyplot()
+using StatPlots; gr()
 using DataFrames
 
 function gingrich_chart(tpa_in,basal_area_in)
