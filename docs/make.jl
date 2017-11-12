@@ -6,14 +6,16 @@ makedocs(
         sitename= "ForestBiometrics.jl",
         format = :html,
         doctest=false,
+        clean=true,
         pages = Any["Home" => "index.md"]
         )
 
- deploydocs(deps = Deps.pip(
-            "pygments",
-            "mkdocs",
-            "mkdocs-material",
-            "python-markdown-math"),
+ deploydocs(#deps = Deps.pip(
+            #"pygments",
+            #"mkdocs",
+            #"mkdocs-material",
+            #"python-markdown-math"),
+            deps = nothing,
             branch = "gh-pages",
             latest = "master",
             julia="0.6",
