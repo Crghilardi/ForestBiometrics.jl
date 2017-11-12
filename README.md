@@ -14,7 +14,6 @@ It is my hope that the package not only ports existing functionality from other 
 
 ## Documentation
 
-[Documentation available here]
 [![](https://img.shields.io/badge/docs-latest-blue.svg)](https://crghilardi.github.io/ForestBiometrics.jl/latest)
 
 

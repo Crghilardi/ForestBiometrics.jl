@@ -39,6 +39,8 @@ Ratkowsky,
 Sibbesen,
 Weibull
 
+export K, KMETRIC,VolumeEquation, MerchSpecs, Sawtimber, Pulp, Fiber
+
 export limiting_distance
 
 export sdi_chart

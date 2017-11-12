@@ -45,3 +45,75 @@ function international_volume(small_end_diam::Float64,length::Int)
       return volume
     end
   end
+
+#introduce abstract super types
+ abstract type VolumeEquation end
+ abstract type MerchSpecs end
+
+type Sawtimber<:MerchSpecs
+std_length
+trim
+min_length
+max_length
+min_dib
+end
+#Sawtimber(16.0,0.5,8.0,20.0,6.0)
+
+type Fiber<:MerchSpecs
+min_length
+std_length
+min_dib
+min_dbh
+end
+#Fiber(8.0,20.0,2.6,4.6)
+
+type Pulp<:MerchSpecs
+min_live_dib #pulp sawlogs
+min_dead_dib #pulp sawlogs
+end
+#Pulp(6.0,6.0)
+
+#K = 0.005454 - converts diameter squared in square inches to square feet.
+#0.00007854 converts diamter square centimeters to square meters
+const K = 0.005454154
+const KMETRIC = 0.00007854
+
+#PREDICT CUBIC FOOT VOLUME FOR A CONIC SEGMENT SUCH AS A STEM TIP
+function conic_cf(lower_diameter,length)
+    cubic_ft=(K*lower_diameter^2.0)/3.0*length
+    return cubic_ft
+end
+
+#PREDICT CUBIC FOOT VOLUME FOR A LOG SEGMENT USING NEWTON'S FORMULA
+function newton_cf(lower_diameter,midpoint_diameter,upper_diameter,length)
+    cubic_ft = (K*length^2.0 + 4.0*K*midpoint_diameter^2.0 + K*upper_diameter^2.0)*length/6.0
+    return cubic_ft
+end
+
+
+####work in progress
+
+
+#PREDICT DIAMETER INSIDE BARK AT ANY LOGICAL HEIGHT
+function get_dib(species,dbh,tht,ht)
+end
+
+#PREDICT THE HEIGHT AT WHICH A SPECIFIED DIAMETER INSIDE BARK OCCURS
+function get_height_to_dib(species,dbh,tht,dib)
+ end
+
+#PREDICT THE CUBIC-FOOT VOLUME IN A TREE BETWEEN TWO HEIGHTS
+function get_segment_cf()
+end
+
+#TO BREAK A SAWTIMBER BOLE INTO LOGS AND POPULATE THE SEGMENT LENGTH
+function stem_buck()
+end
+
+#TO ASSIGN PRODUCT CLASSES TO EACH LOG SEGMENT IN A SINGLE TREE
+function prod_classify()
+end
+
+#TO MERCHANDIZE AN INDIVIDUAL TREE WITH PREVIOUSLY BUCKED LOGS AND
+#PRODUCTS ASSIGNED TO INDIVIDUAL LOGS INTO PIECES, AND DEVELOP THE NECESSARY PIECE INFORMATION (DIB,LEN,GRS,NET,NPCS)
+function merchandize_tree() end
