@@ -3,7 +3,7 @@
 This package was inspired by its R counterpart, the [lmfor package](https://CRAN.R-project.org/package=lmfor) with the addition of equations from the western US. For more info on lmfor, please see http://cs.uef.fi/~lamehtat/rcodes.htm
 
 ## Constants
-This package exports a `const K = 0.005454154`to convert between diameter squared in square inches to square feet and `KMETRIC = 0.00007854` to convert diameter squared in centimeters to square meters when using metric.
+This package exports a `const K = 0.005454154`to convert between diameter squared in square inches to square feet and `const KMETRIC = 0.00007854` to convert diameter squared in centimeters to square meters when using metric.
 
 ## Calculating missing tree heights using a height diameter equation
 Height-diameter equations are widespread in forestry and have been the subject of extensive research over the past decades.
@@ -39,10 +39,14 @@ If a user wanted to change model parameters, they can redefine them as needed in
 
 Pre-defined equation forms available include:
 
-`#latex equations to be added`
-`#2 parameter equation forms, mainly from LMFOR package`
 
-Curtis: ``ht(diameter) = dbh + b1*\frac{dbh}{(1+dbh)^b2}``
+2 parameter equation forms, mainly from LMFOR package:
+
+Curtis:
+
+```math
+ht(diameter) = dbh + b1*\frac{dbh}{(1+dbh)^b2}
+```
 
 Michailoff: ``ht(diameter) = dbh + b1e^b2dbh^-1``
 
@@ -64,18 +68,28 @@ Power: ``ht(diameter) = dbh + b1*(dbh^b2)``
 
 Wyckoff: ``ht(diameter) = dbh + exp(b1+\frac{b2}{dbh+1})``
 
-`3 parameter equations, mainly from LMFOR R package`
 
-`Chapman`,
-`Gompertz`,
-`HossfeldIV`,
-`Korf`,
-`Logistic`,
-`Monserud`,
-`Prodan`,
-`Ratkowsky`,
-`Sibbesen`,
-`Weibull`
+3 parameter equations, mainly from LMFOR R package:
+
+Chapman: ``ht(diameter) = dbh + b1(1-e^-b2*dbh)^b3``
+
+Gompertz: ``ht(diameter) = dbh + b1*exp(-b2*exp(-b3*dbh))``
+
+HossfeldIV: ``ht(diameter) = dbh + \frac{b1}{1+\frac{1}{b2*dbh^b3}}``
+
+Korf: ``ht(diameter) = dbh + b1*exp(-b2*dbh^-b3)``
+
+Logistic: ``ht(diameter) = dbh + \frac{b1}{1+b2*e^-b3*dbh}``
+
+Monserud: ``ht(diameter) = dbh + exp(b1 + b2*dbh^b3) ``
+
+Prodan: ``ht(diameter) = dbh + \frac{dbh^2}{b1+b2*dbh+b3*dbh^2}``
+
+Ratkowsky: ``ht(diameter) = dbh + b1*exp(\frac{-b2}{dbh+b3})``
+
+Sibbesen: ``ht(diameter) = dbh + b1*dbh^b2*dbh^-b3``
+
+Weibull: ``ht(diameter) = dbh + b1(1-e^-b2dbh^b3)``
 
 # Functions
 

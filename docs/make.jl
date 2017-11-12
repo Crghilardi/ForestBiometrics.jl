@@ -4,7 +4,7 @@ using ForestBiometrics
 makedocs(
         modules =[ForestBiometrics],
         sitename= "ForestBiometrics.jl",
-        #format = :html,
+        format = :html,
         doctest=false,
         pages = Any["Home" => "index.md"]
         )
