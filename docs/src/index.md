@@ -42,8 +42,10 @@ Pre-defined equation forms available include:
 `#latex equations to be added`
 `#2 parameter equation forms, mainly from LMFOR package`
 
-`Curtis`,
-`Michailoff`,
+`Curtis` ```ht(diameter)=dbh + \frac{dbh^2}{(b1+b2*dbh)^2}```,
+
+
+`Michailoff` ```ht(diameter)=dbh + b1e^b2dbh^-1```,
 `Meyer`,
 `Micment`,
 `Micment2`,
@@ -127,4 +129,6 @@ Jack D Cohen, John E. Deeming. GTR PSW-82**
 
 will return the Stand Density Index calculated as:
 
-$sdi = tpa * (\frac{qmd}{10})^{1.605}$
+```math
+sdi = tpa * (\frac{qmd}{10})^{1.605}
+```
