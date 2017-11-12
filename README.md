@@ -14,13 +14,9 @@ It is my hope that the package not only ports existing functionality from other 
 
 ## Documentation
 
-** In Process of switching over to Documenter.jl, so docs may get broken.. **
-
-[![](https://img.shields.io/badge/docs-stable-blue.svg)](https://crghilardi.github.io/ForestBiometrics.jl/stable)
+[Documentation available here]
 [![](https://img.shields.io/badge/docs-latest-blue.svg)](https://crghilardi.github.io/ForestBiometrics.jl/latest)
 
-
-[Documentation available here](https://crghilardi.github.io/ForestBiometrics.jl/)
 
 ## Installation
 
