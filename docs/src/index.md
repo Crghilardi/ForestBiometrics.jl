@@ -42,18 +42,27 @@ Pre-defined equation forms available include:
 `#latex equations to be added`
 `#2 parameter equation forms, mainly from LMFOR package`
 
-`Curtis` ``ht(diameter)=dbh + \frac{dbh^2}{(b1+b2*dbh)^2}``,
+Curtis: ``ht(diameter) = dbh + b1*\frac{dbh}{(1+dbh)^b2}``
 
-`Michailoff` ``ht(diameter)=dbh + b1e^b2dbh^-1``,
-`Meyer`,
-`Micment`,
-`Micment2`,
-`Naslund`,
-`Naslund2`,
-`Naslund3`,
-`Naslund4`,
-`Power`, and
-`Wyckoff`
+Michailoff: ``ht(diameter) = dbh + b1e^b2dbh^-1``
+
+Meyer: ``ht(diameter) = dbh + b1(1-e^-b2*dbh)``
+
+Micment: ``ht(diameter) = dbh + \frac{b1dbh}{b2+dbh}``
+
+Micment2: ``ht(diameter) = dbh +\frac{dbh}{b1+b2*dbh}``
+
+Naslund: ``ht(diameter) = dbh + \frac{dbh^2}{(b1+b2*dbh)^2}``
+
+Naslund2: ``ht(diameter) = dbh + \frac{dbh^2}{(b1+(e^b2)*dbh)^2}``
+
+Naslund3: ``ht(diameter) = dbh + \frac{dbh^2}{((e^b1)+b2*dbh)^2}``
+
+Naslund4: ``ht(diameter) = dbh + \frac{dbh^2}{((e^b1)+(e^b2)*dbh)^2}``
+
+Power: ``ht(diameter) = dbh + b1*(dbh^b2)``
+
+Wyckoff: ``ht(diameter) = dbh + exp(b1+\frac{b2}{dbh+1})``
 
 `3 parameter equations, mainly from LMFOR R package`
 
@@ -68,7 +77,7 @@ Pre-defined equation forms available include:
 `Sibbesen`,
 `Weibull`
 
-# functions
+# Functions
 
 `calculate_height(params::HeightDiameter,dbh,species)`
 
