@@ -39,57 +39,52 @@ If a user wanted to change model parameters, they can redefine them as needed in
 
 Pre-defined equation forms available include:
 
+# 2 parameter equation forms, mainly from LMFOR package:
 
-2 parameter equation forms, mainly from LMFOR package:
+Curtis: ``ht(diameter) = dbh + b1(\frac{dbh}{1+dbh})^{b2}``
 
-Curtis:
+Michailoff: ``ht(diameter) = dbh + b1e^{b2dbh^{-1}}``
 
-```math
-ht(diameter) = dbh + b1*\frac{dbh}{(1+dbh)^b2}
-```
-
-Michailoff: ``ht(diameter) = dbh + b1e^b2dbh^-1``
-
-Meyer: ``ht(diameter) = dbh + b1(1-e^-b2*dbh)``
+Meyer: ``ht(diameter) = dbh + b1(1-e^{-b2dbh})``
 
 Micment: ``ht(diameter) = dbh + \frac{b1dbh}{b2+dbh}``
 
 Micment2: ``ht(diameter) = dbh +\frac{dbh}{b1+b2*dbh}``
 
-Naslund: ``ht(diameter) = dbh + \frac{dbh^2}{(b1+b2*dbh)^2}``
+Naslund: ``ht(diameter) = dbh + \frac{dbh^2}{(b1+b2dbh)^{2}}``
 
-Naslund2: ``ht(diameter) = dbh + \frac{dbh^2}{(b1+(e^b2)*dbh)^2}``
+Naslund2: ``ht(diameter) = dbh + \frac{dbh^2}{(b1+e^{b2}dbh)^2}``
 
-Naslund3: ``ht(diameter) = dbh + \frac{dbh^2}{((e^b1)+b2*dbh)^2}``
+Naslund3: ``ht(diameter) = dbh + \frac{dbh^2}{e^{b1}+b2dbh^{2}}``
 
-Naslund4: ``ht(diameter) = dbh + \frac{dbh^2}{((e^b1)+(e^b2)*dbh)^2}``
+Naslund4: ``ht(diameter) = dbh + \frac{dbh^2}{(e^{b1}+e^{b2}dbh)^{2}}``
 
-Power: ``ht(diameter) = dbh + b1*(dbh^b2)``
+Power: ``ht(diameter) = dbh + b1dbh^{b2}``
 
 Wyckoff: ``ht(diameter) = dbh + exp(b1+\frac{b2}{dbh+1})``
 
 
-3 parameter equations, mainly from LMFOR R package:
+# 3 parameter equations, mainly from LMFOR R package:
 
-Chapman: ``ht(diameter) = dbh + b1(1-e^-b2*dbh)^b3``
+Chapman: ``ht(diameter) = dbh + b1(1-e^{-b2dbh})^{b3}``
 
-Gompertz: ``ht(diameter) = dbh + b1*exp(-b2*exp(-b3*dbh))``
+Gompertz: ``ht(diameter) = dbh + b1exp(-b2exp(-b3dbh))``
 
-HossfeldIV: ``ht(diameter) = dbh + \frac{b1}{1+\frac{1}{b2*dbh^b3}}``
+HossfeldIV: ``ht(diameter) = dbh + \frac{b1}{1+\frac{1}{b2dbh^{b3}}}``
 
-Korf: ``ht(diameter) = dbh + b1*exp(-b2*dbh^-b3)``
+Korf: ``ht(diameter) = dbh + b1exp(-b2dbh^{-b3})``
 
-Logistic: ``ht(diameter) = dbh + \frac{b1}{1+b2*e^-b3*dbh}``
+Logistic: ``ht(diameter) = dbh + \frac{b1}{1+b2e^{-b3dbh}}``
 
-Monserud: ``ht(diameter) = dbh + exp(b1 + b2*dbh^b3) ``
+Monserud: ``ht(diameter) = dbh + exp(b1 + b2dbh^{b3})``
 
-Prodan: ``ht(diameter) = dbh + \frac{dbh^2}{b1+b2*dbh+b3*dbh^2}``
+Prodan: ``ht(diameter) = dbh + \frac{dbh^2}{b1+b2dbh+b3dbh^2}``
 
-Ratkowsky: ``ht(diameter) = dbh + b1*exp(\frac{-b2}{dbh+b3})``
+Ratkowsky: ``ht(diameter) = dbh + b1exp(\frac{-b2}{dbh+b3})``
 
-Sibbesen: ``ht(diameter) = dbh + b1*dbh^b2*dbh^-b3``
+Sibbesen: ``ht(diameter) = dbh + b1dbh^{b2dbh^{-b3}}``
 
-Weibull: ``ht(diameter) = dbh + b1(1-e^-b2dbh^b3)``
+Weibull: ``ht(diameter) = dbh + b1(1-e^{-b2dbh^{b3}})``
 
 # Functions
 
