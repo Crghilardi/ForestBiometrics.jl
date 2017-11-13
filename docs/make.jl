@@ -8,8 +8,15 @@ makedocs(
         authors="Casey Ghilardi",
         doctest=false,
         clean=true,
-        pages = Any["Home" => "index.md"]
-        )
+        pages = Any[
+        "Home" => "index.md",
+        "Functionality" =>Any["functionality/height_diameter.md",
+        "functionality/density.md",
+        "functionality/other_functions.md"],
+        "Volume Equations" => Any["volume_equations/volume_eqs.md"],
+        "Visualizations" =>Any["visualizations/visualizations.md"],
+        "Included Datasets"=>Any["data/data.md"]
+        ])
 
  deploydocs(#deps = Deps.pip(
             #"pygments",
