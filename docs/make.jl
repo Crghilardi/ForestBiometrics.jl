@@ -5,6 +5,7 @@ makedocs(
         modules =[ForestBiometrics],
         sitename= "ForestBiometrics.jl",
         format = :html,
+        authors="Casey Ghilardi",
         doctest=false,
         clean=true,
         pages = Any["Home" => "index.md"]
@@ -18,7 +19,9 @@ makedocs(
             deps = nothing,
             branch = "gh-pages",
             latest = "master",
-            julia="0.6",
+            julia ="0.6",
             repo = "github.com/Crghilardi/ForestBiometrics.jl.git",
-            target = "build"
+            target = "build",
+            osname ="linux",
+            make = nothing
    )
