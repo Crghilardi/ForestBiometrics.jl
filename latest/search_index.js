@@ -37,7 +37,23 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Types",
     "category": "section",
-    "text": "ForestBiometrics creates a type HeightDiameter that holds an equation form and its parameters for estimating a tree height given a diameter at a fixed height(usually 4.5 feet).struct HeightDiameter <: Function\nformula::Function\nb\nendformula can be one of the pre-named equation forms such as Wyckoff, Korf, etc.Wyckoff=(x,b)->4.5+exp(b[1]+(b[2]/(x+1)) #defined in HeightDub.jlb is a dictionary of species specific equation parameters in the form ofString: Array{Float64} #species specific coefficients stored as dictionary\n\ncoeffs =Dict{String,Array{Float64}}(\n\"WP\"=> [5.19988	-9.26718],\n\"WL\"=>[4.97407	-6.78347],\n\"DF\"=>[4.81519	-7.29306] )\n\nHD = HeightDiameter(Wyckoff,coeffs)If a user wanted to change model parameters, they can redefine them as needed independent of model form or change both equation form and associated parameters.Pre-defined equation forms available include:2 parameter equation forms, mainly from LMFOR package:Curtis:ht(diameter) = dbh + b1*fracdbh(1+dbh)^b2Michailoff: ht(diameter) = dbh + b1e^b2dbh^-1Meyer: ht(diameter) = dbh + b1(1-e^-b2*dbh)Micment: ht(diameter) = dbh + fracb1dbhb2+dbhMicment2: ht(diameter) = dbh +fracdbhb1+b2*dbhNaslund: ht(diameter) = dbh + fracdbh^2(b1+b2*dbh)^2Naslund2: ht(diameter) = dbh + fracdbh^2(b1+(e^b2)*dbh)^2Naslund3: ht(diameter) = dbh + fracdbh^2((e^b1)+b2*dbh)^2Naslund4: ht(diameter) = dbh + fracdbh^2((e^b1)+(e^b2)*dbh)^2Power: ht(diameter) = dbh + b1*(dbh^b2)Wyckoff: ht(diameter) = dbh + exp(b1+fracb2dbh+1)3 parameter equations, mainly from LMFOR R package:Chapman: ht(diameter) = dbh + b1(1-e^-b2*dbh)^b3Gompertz: ht(diameter) = dbh + b1*exp(-b2*exp(-b3*dbh))HossfeldIV: ht(diameter) = dbh + fracb11+frac1b2*dbh^b3Korf: ht(diameter) = dbh + b1*exp(-b2*dbh^-b3)Logistic: ht(diameter) = dbh + fracb11+b2*e^-b3*dbhMonserud: ht(diameter) = dbh + exp(b1 + b2*dbh^b3)Prodan: ht(diameter) = dbh + fracdbh^2b1+b2*dbh+b3*dbh^2Ratkowsky: ht(diameter) = dbh + b1*exp(frac-b2dbh+b3)Sibbesen: ht(diameter) = dbh + b1*dbh^b2*dbh^-b3Weibull: ht(diameter) = dbh + b1(1-e^-b2dbh^b3)"
+    "text": "ForestBiometrics creates a type HeightDiameter that holds an equation form and its parameters for estimating a tree height given a diameter at a fixed height(usually 4.5 feet).struct HeightDiameter <: Function\nformula::Function\nb\nendformula can be one of the pre-named equation forms such as Wyckoff, Korf, etc.Wyckoff=(x,b)->4.5+exp(b[1]+(b[2]/(x+1)) #defined in HeightDub.jlb is a dictionary of species specific equation parameters in the form ofString: Array{Float64} #species specific coefficients stored as dictionary\n\ncoeffs =Dict{String,Array{Float64}}(\n\"WP\"=> [5.19988	-9.26718],\n\"WL\"=>[4.97407	-6.78347],\n\"DF\"=>[4.81519	-7.29306] )\n\nHD = HeightDiameter(Wyckoff,coeffs)If a user wanted to change model parameters, they can redefine them as needed independent of model form or change both equation form and associated parameters.Pre-defined equation forms available include:"
+},
+
+{
+    "location": "index.html#parameter-equation-forms,-mainly-from-LMFOR-package:-1",
+    "page": "Home",
+    "title": "2 parameter equation forms, mainly from LMFOR package:",
+    "category": "section",
+    "text": "Curtis: ht(diameter) = dbh + b1(fracdbh1+dbh)^b2Michailoff: ht(diameter) = dbh + b1e^b2dbh^-1Meyer: ht(diameter) = dbh + b1(1-e^-b2dbh)Micment: ht(diameter) = dbh + fracb1dbhb2+dbhMicment2: ht(diameter) = dbh +fracdbhb1+b2*dbhNaslund: ht(diameter) = dbh + fracdbh^2(b1+b2dbh)^2Naslund2: ht(diameter) = dbh + fracdbh^2(b1+e^b2dbh)^2Naslund3: ht(diameter) = dbh + fracdbh^2e^b1+b2dbh^2Naslund4: ht(diameter) = dbh + fracdbh^2(e^b1+e^b2dbh)^2Power: ht(diameter) = dbh + b1dbh^b2Wyckoff: ht(diameter) = dbh + exp(b1+fracb2dbh+1)"
+},
+
+{
+    "location": "index.html#parameter-equations,-mainly-from-LMFOR-R-package:-1",
+    "page": "Home",
+    "title": "3 parameter equations, mainly from LMFOR R package:",
+    "category": "section",
+    "text": "Chapman: ht(diameter) = dbh + b1(1-e^-b2dbh)^b3Gompertz: ht(diameter) = dbh + b1exp(-b2exp(-b3dbh))HossfeldIV: ht(diameter) = dbh + fracb11+frac1b2dbh^b3Korf: ht(diameter) = dbh + b1exp(-b2dbh^-b3)Logistic: ht(diameter) = dbh + fracb11+b2e^-b3dbhMonserud: ht(diameter) = dbh + exp(b1 + b2dbh^b3)Prodan: ht(diameter) = dbh + fracdbh^2b1+b2dbh+b3dbh^2Ratkowsky: ht(diameter) = dbh + b1exp(frac-b2dbh+b3)Sibbesen: ht(diameter) = dbh + b1dbh^b2dbh^-b3Weibull: ht(diameter) = dbh + b1(1-e^-b2dbh^b3)"
 },
 
 {
