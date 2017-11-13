@@ -1,3 +1,4 @@
+# Other functions
 ## Calculating limiting distance for a variable radius plot
 
 While this may not be useful in a programming context, it is a relatively simple function and may be useful for demonstration purposes.

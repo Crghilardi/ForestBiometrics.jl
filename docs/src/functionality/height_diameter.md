@@ -1,4 +1,4 @@
-## Height-Diameter Equations
+# Height-Diameter Equations
 
 ## Calculating missing tree heights using a height diameter equation
 Height-diameter equations are widespread in forestry and have been the subject of extensive research over the past decades.
@@ -6,7 +6,7 @@ As a result there is a large amount of formulas and parameter sets based on regi
 
 In forest inventories, measuring heights on all trees may not be possible so formulas are used to fill in missing data.
 
-# Types
+## Types
 
 ForestBiometrics creates a type `HeightDiameter` that holds an equation form and its parameters for estimating a tree height given a diameter at a fixed height(usually 4.5 feet).
 
@@ -81,7 +81,7 @@ Sibbesen: ``ht(diameter) = bh + b1dbh^{b2dbh^{-b3}}``
 
 Weibull: ``ht(diameter) = bh + b1(1-e^{-b2dbh^{b3}})``
 
-# Functions
+## Functions
 
 `calculate_height(params::HeightDiameter,dbh,species)`
 

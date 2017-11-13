@@ -1,5 +1,3 @@
-# Functionality
-
 This package was inspired by its R counterpart, the [lmfor package](https://CRAN.R-project.org/package=lmfor) with the addition of equations from the western US. For more info on lmfor, please see http://cs.uef.fi/~lamehtat/rcodes.htm
 
 This package defines a number of forestry domain specific equations and functions to allow users to quickly begin solving problems in the Julia language.
