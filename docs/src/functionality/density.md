@@ -1,6 +1,6 @@
 # Measures of forest density
 
-## Calculating Reineke's Stand Density Index (SDI)
+## Reineke's Stand Density Index (SDI)
 
     sdi(tpa,qmd)
 

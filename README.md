@@ -30,6 +30,12 @@ To install a local copy use the `Pkg.clone()` functionality
 If you are interested in this package and would like to contribute, please submit an issue or pull request.
 As previously mentioned, it is my hope that this package will not only provide functionality but also be used to examine Julia in the context of forestry specific use cases.
 
+## Dependencies
+
+The following Julia packages are used in this package:
+
+Plots.jl
+DataFrames.jl
 
 ## Example outputs
 
