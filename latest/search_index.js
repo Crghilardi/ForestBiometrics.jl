@@ -73,9 +73,9 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "functionality/density.html#Calculating-Reineke's-Stand-Density-Index-(SDI)-1",
+    "location": "functionality/density.html#Reineke's-Stand-Density-Index-(SDI)-1",
     "page": "Measures of forest density",
-    "title": "Calculating Reineke's Stand Density Index (SDI)",
+    "title": "Reineke's Stand Density Index (SDI)",
     "category": "section",
     "text": "sdi(tpa,qmd)will return the Stand Density Index calculated as:sdi = tpa * (fracqmd10)^1605"
 },
@@ -114,31 +114,47 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "volume_equations/volume_eqs.html#",
-    "page": "-",
-    "title": "-",
+    "page": "Volume Equations",
+    "title": "Volume Equations",
     "category": "page",
-    "text": "#Volume Equations"
+    "text": ""
+},
+
+{
+    "location": "volume_equations/volume_eqs.html#Volume-Equations-1",
+    "page": "Volume Equations",
+    "title": "Volume Equations",
+    "category": "section",
+    "text": ""
 },
 
 {
     "location": "volume_equations/volume_eqs.html#Calculating-the-volume-of-an-individual-tree-1",
-    "page": "-",
+    "page": "Volume Equations",
     "title": "Calculating the volume of an individual tree",
     "category": "section",
-    "text": "This functionality is under active development and may changeForestBiometrics has functions to calculate log volumes using a variety of scaling rules  doyle_volume(small end diameter, log length)calculates the doyle volume  scribner_volume(small end diameter, log length)calculates the scribner volume  international_volume(small end diameter, log length)calculates the volume using international ruleIn addition, we introduce two abstract types, VolumeEquation, and MerchSpecs.MerchSpecs is a super type to allow for merchandizing specifications to be stored and referenced by product and some common ones have been predefined.  type Sawtimber<:MerchSpecs\n  std_length\n  trim\n  min_length\n  max_length\n  min_dib\n  end\n  Sawtimber(16.0,0.5,8.0,20.0,6.0)"
+    "text": "This functionality is under active development and may changeForestBiometrics has functions to calculate log volumes using a variety of scaling rules  doyle_volume(small end diameter, log length)calculates the doyle volume  scribner_volume(small end diameter, log length; decimal_C=false)calculates the scribner volume calculated using the formulamath\n\nV = (0.79D^2 - 2D - 4)\\frac{L}{16}where V is the Scribner board foot volume, D is the samll end diameter n inches and L is the log length in feet.decimal_C=true will return the board feet in the standard Scribner Decimal C lookup table for trees dib >5\" and log lengths <20'. Oversize logs are calculated using the formula above.   international_volume(small end diameter, log length)calculates the volume using international ruleIn addition, we introduce two abstract types, VolumeEquation, and MerchSpecs.MerchSpecs is a super type to allow for merchandizing specifications to be stored and referenced by product and some common ones have been predefined.  type Sawtimber<:MerchSpecs\n  std_length\n  trim\n  min_length\n  max_length\n  min_dib\n  end\n  Sawtimber(16.0,0.5,8.0,20.0,6.0)"
 },
 
 {
     "location": "visualizations/visualizations.html#",
-    "page": "-",
-    "title": "-",
+    "page": "Forestry charts",
+    "title": "Forestry charts",
     "category": "page",
-    "text": "#Forestry charts"
+    "text": ""
+},
+
+{
+    "location": "visualizations/visualizations.html#Forestry-charts-1",
+    "page": "Forestry charts",
+    "title": "Forestry charts",
+    "category": "section",
+    "text": ""
 },
 
 {
     "location": "visualizations/visualizations.html#Gingrich-stocking-chart-1",
-    "page": "-",
+    "page": "Forestry charts",
     "title": "Gingrich stocking chart",
     "category": "section",
     "text": ""
@@ -146,7 +162,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "visualizations/visualizations.html#Reineke-SDI-chart-1",
-    "page": "-",
+    "page": "Forestry charts",
     "title": "Reineke SDI chart",
     "category": "section",
     "text": ""
@@ -161,11 +177,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "data/data.html#Included-datasets-1",
+    "location": "data/data.html#FVS-database-1",
     "page": "-",
-    "title": "Included datasets",
+    "title": "FVS database",
     "category": "section",
-    "text": "This package comes with a FVS ready database in the test/data folder. This database contains tree, plot and stand records within multiple FVS variants across the United States. "
+    "text": "This package comes with a FVS ready database in the test/data folder. This database contains tree, plot and stand records within multiple FVS variants across the United States."
 },
 
 ]}
