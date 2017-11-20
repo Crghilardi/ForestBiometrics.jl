@@ -18,6 +18,7 @@ script:
   - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
   #- julia -e 'ENV["PYTHON"] = ""; Pkg.add("PyPlot"); Pkg.build("PyPlot")'
   - julia -e 'Pkg.add("GR")'
+  - julia -e 'Pkg.add("OffsetArrays")'
   - julia -e 'Pkg.clone(pwd()); Pkg.build("ForestBiometrics"); Pkg.test("ForestBiometrics"; coverage=true)'
 
 before_install:
