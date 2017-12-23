@@ -1,9 +1,28 @@
-# Functions to calculate the Doyle Board foot volume,scribner volume,
-# or international volume from small end diameter and log length
-
-#TO DO: add cubic volume?
+#Frustrum of a paraboloid - Smalian's Formula
 #http://oak.snr.missouri.edu/forestry_functions/cubicvolume.php
+function frustrum_paraboloid(small_end_diam,large_end_diam,length)
+    As = pi / (4.0 * 144.0) * (small_end_diam)^2 #assumes needing to convert to inches?
+    Al = pi / (4.0 * 144.0) * (large_end_diam)^2
+    volume = (length/2)*(As+Al)
+    return volume
+end
 
+#Frustrum of a cone
+#As = area of small end
+#Al = area of large end
+ function frustrum_cone(small_end_diam,large_end_diam,length)
+     As = pi / (4.0 * 144.0) * (small_end_diam)^2 #assumes needing to convert to inches?
+     Al = pi / (4.0 * 144.0) * (large_end_diam)^2
+     volume = (length/3) * (As + sqrt(As*Al) + Al)
+     return volume
+ end
+
+#frustum of a neiloid cylinder
+
+function frustrum_neiloid(small_end_diam,large_end_diam,length)
+    volume = (length/4) * (As + cbrt( As^2 * Al ) + cbrt( As * Al^2) +  Al )
+    return volume
+end
 
 #Function to calculate the Doyle scale volume
 #for more info see: http://oak.snr.missouri.edu/forestry_functions/doylebfvolume.php
@@ -84,9 +103,12 @@ function scribner_volume(small_end_diam,length;decimal_C=false)
     end
  end
 
+ # Functions to calculate the Doyle Board foot volume,scribner volume,
+ # or international volume from small end diameter and log length
+
 #Function to calculate the International scale volume
 #for more info see: http://oak.snr.missouri.edu/forestry_functions/int14bfvolume.php
-function international_volume(small_end_diam::Float64,length::Int)
+function international_volume(small_end_diam,length)
   if length == 4
       volume = 0.22*small_end_diam^2-0.71*small_end_diam
     elseif length == 8
@@ -111,9 +133,28 @@ function international_volume(small_end_diam::Float64,length::Int)
     end
   end
 
+####
+#I don't know what a NVEL/Volume Equations API should look like?
+#Various attempts below...
 #introduce abstract super types
  abstract type VolumeEquation end
  abstract type MerchSpecs end
+
+
+ abstract Log end
+ type LogSegment
+ small_end_diam
+ large_end_diam
+ length
+ shape #?
+ end
+
+ type shape #?
+ shape
+ end
+
+
+
 
 type Sawtimber<:MerchSpecs
 std_length
