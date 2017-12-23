@@ -141,7 +141,8 @@ function international_volume(small_end_diam,length)
  abstract type MerchSpecs end
 
 
- abstract Log end
+ abstract type Log end
+
  type LogSegment
  small_end_diam
  large_end_diam
@@ -152,9 +153,6 @@ function international_volume(small_end_diam,length)
  type shape #?
  shape
  end
-
-
-
 
 type Sawtimber<:MerchSpecs
 std_length
