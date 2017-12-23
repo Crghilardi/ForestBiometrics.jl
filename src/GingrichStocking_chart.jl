@@ -85,14 +85,28 @@ df3=DataFrame(TPA=Float64[],BA=Float64[],QMD=Int[])
 for i in dia
   append!(df3,make_bline(i))
 end
-plot(df,:TPA,:BA,group=:QMD,color=:black)
-plot!(df2,:TPA,:BA,group=:STK,color=:black,
+@df df plot(:TPA,:BA,group=:QMD,color=:black,legend=false)
+
+@df df2 plot!(:TPA,:BA,group=:STK,color=:black,
 xlabel="Trees Per Acre",
 ylabel="Basal Area (sq ft./acre)",
 xticks=collect(0:50:450),
 yticks=collect(0:20:200),
 legend=false)
 scatter!((tpa_in,basal_area_in))
+
+#####################
+#deprecated when dataframes reboot came out? had to switch to @df syntax
+# plot(df,:TPA,:BA,group=:QMD,color=:black)
+# plot!(df2,:TPA,:BA,group=:STK,color=:black,
+# xlabel="Trees Per Acre",
+# ylabel="Basal Area (sq ft./acre)",
+# xticks=collect(0:50:450),
+# yticks=collect(0:20:200),
+# legend=false)
+# scatter!((tpa_in,basal_area_in))
+#####################
+
 end #end function
 
 gingrich_chart(400,80)
