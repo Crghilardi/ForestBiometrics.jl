@@ -149,7 +149,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Volume Equations",
     "title": "Scribner",
     "category": "section",
-    "text": "  scribner_volume(small end diameter, log length; decimal_C=false)calculates the scribner volume calculated using the formulaV = (079D^2 - 2D - 4)fracL16where V is the Scribner board foot volume, D is the samll end diameter n inches and L is the log length in feet.decimal_C=true will return the board feet in the standard Scribner Decimal C lookup table for trees dib >5\" and log lengths <20'. Oversize logs are calculated using the formula above."
+    "text": "  scribner_volume(small end diameter, log length; decimal_C=false)calculates the scribner volume calculated using the formulaV = (079D^2 - 2D - 4)fracL16where V is the Scribner board foot volume, D is the small end diameter in inches and L is the log length in feet.decimal_C=true will return the board feet in the standard Scribner Decimal C lookup table for trees dib >5\" and log lengths <20'. Oversize logs are calculated using the formula above."
 },
 
 {
@@ -165,7 +165,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Volume Equations",
     "title": "Types",
     "category": "section",
-    "text": "In addition, we introduce two abstract types, VolumeEquation, and MerchSpecs.MerchSpecs is a super type to allow for merchandizing specifications to be stored and referenced by product and some common ones have been predefined.  type Sawtimber<:MerchSpecs\n  std_length\n  trim\n  min_length\n  max_length\n  min_dib\n  end\n  Sawtimber(16.0,0.5,8.0,20.0,6.0)"
+    "text": "In addition, we introduce two abstract types, VolumeEquation, and MerchSpecs.MerchSpecs is a super type to allow for merchandizing specifications to be stored and referenced by product and some common ones have been predefined.  type Sawtimber<:MerchSpecs\n  std_length\n  trim\n  min_length\n  max_length\n  min_dib\n  end\n  Sawtimber(16.0,0.5,8.0,20.0,6.0)There are also other Types including Log and LogSegment defined in the source but not exported yet, but I haven't fully fleshed out what a Julia-esque volume equations API looks like. Suggestions and issues are welcome."
 },
 
 {
@@ -181,7 +181,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Forestry charts",
     "title": "Forestry charts",
     "category": "section",
-    "text": ""
+    "text": "ForestBiometrics.jl has some graphing functionality including:"
 },
 
 {
@@ -189,7 +189,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Forestry charts",
     "title": "Gingrich stocking chart",
     "category": "section",
-    "text": ""
+    "text": "  gingrich_chart(tpa_in,basal_area_in)will return a gingrich style stocking chart with a point (See example on Readme.md on project Github)"
 },
 
 {
@@ -197,7 +197,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Forestry charts",
     "title": "Reineke SDI chart",
     "category": "section",
-    "text": ""
+    "text": "  sdi_chart(max_sdi,tpa,qmd)will return a stand density index chart, where max is the upper bound and a point will be placed on tpa and qmd (See example on Readme.md on project Github)"
 },
 
 {
