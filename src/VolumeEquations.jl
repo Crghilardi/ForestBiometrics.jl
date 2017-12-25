@@ -1,35 +1,158 @@
-#Frustrum of a paraboloid - Smalian's Formula
-#http://oak.snr.missouri.edu/forestry_functions/cubicvolume.php
-function frustrum_paraboloid(small_end_diam,large_end_diam,length)
-    As = pi / (4.0 * 144.0) * (small_end_diam)^2 #assumes needing to convert to inches?
-    Al = pi / (4.0 * 144.0) * (large_end_diam)^2
-    volume = (length/2)*(As+Al)
-    return volume
+#CONSTANTS
+#K = 0.005454 - converts diameter squared in square inches to square feet.
+#0.00007854 converts diamter square centimeters to square meters
+const K = 0.005454154
+const KMETRIC = 0.00007854
+
+abstract type Log end
+
+type LogSegment
+small_end_diam
+large_end_diam
+length
+shape #?
 end
 
-#Frustrum of a cone
-#As = area of small end
-#Al = area of large end
- function frustrum_cone(small_end_diam,large_end_diam,length)
-     As = pi / (4.0 * 144.0) * (small_end_diam)^2 #assumes needing to convert to inches?
-     Al = pi / (4.0 * 144.0) * (large_end_diam)^2
-     volume = (length/3) * (As + sqrt(As*Al) + Al)
-     return volume
- end
-
-#frustum of a neiloid cylinder
-
-function frustrum_neiloid(small_end_diam,large_end_diam,length)
-    volume = (length/4) * (As + cbrt( As^2 * Al ) + cbrt( As * Al^2) +  Al )
-    return volume
+type shape #?
+shape
 end
 
-#Function to calculate the Doyle scale volume
-#for more info see: http://oak.snr.missouri.edu/forestry_functions/doylebfvolume.php
-function doyle_volume(small_end_diam,length)
-  volume=((small_end_diam-4.0)/4.0)^2*length
- return volume
-  end
+abstract type Shape end
+
+function area(diameter)
+    K * diameter^2
+end
+
+
+#Table 6.1 form Kershaw et al Forest Mensuration
+#Equations to compute Cubic Volume of Important Solids
+
+# Equation 6.1
+#V=AₗL where Aₗ is the area of the base(large end).
+type Cylinder
+length
+large_end_diam
+end
+
+function volume(solid::Cylinder)
+    V = area(solid.large_end_diam)*solid.length
+    return V
+end
+
+#Equation 6.2
+#V= 1/2(AₗH)
+#Paraboloid
+
+type Paraboloid
+length
+large_end_diam
+end
+
+function volume(solid::Paraboloid)
+    V = 1/2(area(solid.large_end_diam))*solid.length
+    V
+end
+
+#Equation 6.3
+#V=1/3(AₗL)
+#Cone
+#PREDICT CUBIC FOOT VOLUME FOR A CONIC SEGMENT SUCH AS A STEM TIP
+type Cone
+length
+large_end_diam
+end
+
+function volume(solid::Cone)
+    V = 1/3(area(solid.large_end_diam))*solid.length
+    return V
+end
+
+#Equation 6.4
+#V=1/4(AₗL)
+#Neiloid
+
+type Neiloid
+length
+large_end_diam
+end
+
+function volume(solid::Neiloid)
+    V = 1/4(area(solid.large_end_diam))*solid.length
+    return V
+end
+
+#Equation 6.5- Smalian's formula
+#V=L/2(Aₗ + Aₛ) where L is the length and Aₛ is the area of the upper end (or small end)
+#Paraboloid frustrum
+
+#Equation 6.6 - Huber's formula
+#V=AₘL where Aₘ is the area at middle point
+#Paraboloid frustrum
+
+#Equation 6.9 - Newton's formula
+#V=L/6(Aₗ + 4*Aₘ + Aₛ)
+#Neiloid,Paraboloid or Conic Frustrum
+
+type ParaboloidFrustrum
+length
+large_end_diam
+mid_point_diam #can set to nothing
+small_end_diam
+end
+#ParaboloidFrustrum(12,14,nothing,10)
+
+function volume(solid::ParaboloidFrustrum; huber=false; newton = false)
+    if hubers == true
+        V = area(solid.mid_point_diam) * solid.length
+    elseif newton == true
+        V = (solid.length/6) * (area(solid.large_end_diam) + 4*area(solid.mid_point_diam) + area(solid.small_end_diam))
+    else
+        V = area(solid.large_end_diam) + area(solid.small_end_diam) * (solid.length/2)
+    end
+return V
+end
+
+#Equation 6.7
+#V=L/3(Aₗ + sqrt(Aₗ*Aₛ) + Aₛ)
+
+type ConeFrustrum
+length
+large_end_diam
+mid_point_diam #can set to nothing
+small_end_diam
+end
+
+function volume(solid::ConeFrustrum; newton=false)
+    if newton == true
+        V = (solid.length/6) * (area(solid.large_end_diam) + 4*area(solid.mid_point_diam) + area(solid.small_end_diam))
+        else
+            V = area(solid.large_end_diam) + area(solid.small_end_diam) * (solid.length/2)
+    end
+return V
+end
+
+
+#Equation 6.8
+#V=L/4(Aₗ + cbrt(Aₗ²*Aₛ) + cbrt(Aₗ*Aₛ²) + Aₛ)
+
+type NeiloidFrustrum
+length
+large_end_diam
+mid_point_diam #can set to nothing
+small_end_diam
+end
+
+function volume(solid::NeiloidFrustrum; newton=false)
+    if newton == true
+        V = (solid.length/6) * (area(solid.large_end_diam) + 4*area(solid.mid_point_diam) + area(solid.small_end_diam))
+    else
+        V = (solid.length/4) *
+        (cbrt(area(solid.large_end_diam)^2 * area(solid.small_end_diam)) +
+        cbrt((K * solid.large_end_diam^2) * area(solid.small_end_diam)^2) +
+        area(solid.small_end_diam)
+    end
+return V
+end
 
 #Function to calculate the Scribner scale volume
 #for more info see: http://oak.snr.missouri.edu/forestry_functions/scribnerbfvolume.php
@@ -103,8 +226,12 @@ function scribner_volume(small_end_diam,length;decimal_C=false)
     end
  end
 
- # Functions to calculate the Doyle Board foot volume,scribner volume,
- # or international volume from small end diameter and log length
+ #Function to calculate the Doyle scale volume
+ #for more info see: http://oak.snr.missouri.edu/forestry_functions/doylebfvolume.php
+ function doyle_volume(small_end_diam,length)
+   volume=((small_end_diam-4.0)/4.0)^2*length
+  return volume
+   end
 
 #Function to calculate the International scale volume
 #for more info see: http://oak.snr.missouri.edu/forestry_functions/int14bfvolume.php
@@ -140,20 +267,6 @@ function international_volume(small_end_diam,length)
  abstract type VolumeEquation end
  abstract type MerchSpecs end
 
-
- abstract type Log end
-
- type LogSegment
- small_end_diam
- large_end_diam
- length
- shape #?
- end
-
- type shape #?
- shape
- end
-
 type Sawtimber<:MerchSpecs
 std_length
 trim
@@ -177,28 +290,10 @@ min_dead_dib #pulp sawlogs
 end
 #Pulp(6.0,6.0)
 
-#K = 0.005454 - converts diameter squared in square inches to square feet.
-#0.00007854 converts diamter square centimeters to square meters
-const K = 0.005454154
-const KMETRIC = 0.00007854
-
-#PREDICT CUBIC FOOT VOLUME FOR A CONIC SEGMENT SUCH AS A STEM TIP
-function conic_cf(lower_diameter,length)
-    cubic_ft=(K*lower_diameter^2.0)/3.0*length
-    return cubic_ft
-end
-
-#PREDICT CUBIC FOOT VOLUME FOR A LOG SEGMENT USING NEWTON'S FORMULA
-function newton_cf(lower_diameter,midpoint_diameter,upper_diameter,length)
-    cubic_ft = (K*length^2.0 + 4.0*K*midpoint_diameter^2.0 + K*upper_diameter^2.0)*length/6.0
-    return cubic_ft
-end
-
-
 ####work in progress
 
-#bark thickness
-function dib_to_dob end
+#bark thickness separate?
+function dib_to_dob() end
 
 #PREDICT DIAMETER INSIDE BARK AT ANY LOGICAL HEIGHT
 function get_dib(species,dbh,tht,ht)
