@@ -150,7 +150,7 @@ function volume(solid::NeiloidFrustrum; newton=false)
         V = (solid.length/4) *
         (cbrt(area(solid.large_end_diam)^2 * area(solid.small_end_diam)) +
         cbrt((K * solid.large_end_diam^2) * area(solid.small_end_diam)^2) +
-        area(solid.small_end_diam)
+        area(solid.small_end_diam))
     end
 return V
 end
