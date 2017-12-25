@@ -101,8 +101,9 @@ small_end_diam
 end
 #ParaboloidFrustrum(12,14,nothing,10)
 
-function volume(solid::ParaboloidFrustrum; huber=false; newton = false)
-    if hubers == true
+
+function volume(solid::ParaboloidFrustrum; huber=false, newton = false)
+    if huber == true
         V = area(solid.mid_point_diam) * solid.length
     elseif newton == true
         V = (solid.length/6) * (area(solid.large_end_diam) + 4*area(solid.mid_point_diam) + area(solid.small_end_diam))
