@@ -197,7 +197,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Forestry charts",
     "title": "Reineke SDI chart",
     "category": "section",
-    "text": "  sdi_chart(max_sdi,tpa,qmd)will return a stand density index chart, where max is the upper bound and a point will be placed on tpa and qmd (See example on Readme.md on project Github)"
+    "text": "  sdi_chart(tpa,qmd;max_sdi=450)will return a stand density index chart with a point placed on tpa and qmd and lines at 35%(crown closure), 55%(competition-induced mortality bound) and 100% of max. max_sdi is an optional kwarg that can be used to change the upper bound. Default max_sdi used is 450. (See example on Readme.md on project Github)"
 },
 
 {
