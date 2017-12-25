@@ -197,6 +197,8 @@ end
 
 ####work in progress
 
+#bark thickness
+function dib_to_dob end
 
 #PREDICT DIAMETER INSIDE BARK AT ANY LOGICAL HEIGHT
 function get_dib(species,dbh,tht,ht)

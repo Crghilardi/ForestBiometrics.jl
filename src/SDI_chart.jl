@@ -27,5 +27,3 @@ annotate!([(80, 18, text("35%",10)),
            ])
 scatter!((tpa,qmd))
 end #end function
-
-sdi_chart(230,500,8)
