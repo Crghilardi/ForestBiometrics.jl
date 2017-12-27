@@ -31,24 +31,8 @@ length
 large_end_diam
 mid_point_diam #can set to nothing ( or missing in 0.7.0+?)
 small_end_diam
-end
-
-some shapes have additonal flag kwargs to modify the formulas used such as:
-
-    function volume(solid::ParaboloidFrustrum; huber=false, newton = false)
-
-and
-
-    function volume(solid::ConeFrustrum; newton=false)
-
-where `huber = true` uses the form ``V=A_mL`` and `newton=true` uses the form ``V=L/6(A_l + 4A_m + A_s)`` otherwise smalian&#39;s form ``V=L/2(A_l + A_s)``  is used for ParaboloidFrustrum and ``V=L/3(A_l + \sqrt{A_l*A_s} + A_s`` for ConeFrustrum.
-
-
-
-
-
-
-type ConeFrustrum
+end</code></pre><p>some shapes have additonal kwargs to modify the formula used such as:</p><pre><code class="language-none">function volume(solid::ParaboloidFrustrum; huber=false, newton = false)
+function volume(solid::ConeFrustrum; newton=false)`</code></pre><p>where <code>huber = true</code> uses the form <span>$V=A_mL$</span> and <code>newton=true</code> uses the form <span>$V=L/6(A_l + 4A_m + A_s)$</span> otherwise smalian&#39;s form <span>$V=L/2(A_l + A_s)$</span>  is used for ParaboloidFrustrum and <span>$V=L/3(A_l + \sqrt{A_l*A_s} + A_s$</span> for ConeFrustrum.</p><pre><code class="language-none">type ConeFrustrum
 length
 large_end_diam
 mid_point_diam #can set to nothing
