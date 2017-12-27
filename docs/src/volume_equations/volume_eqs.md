@@ -79,15 +79,12 @@ I have created a few base types based on the possible geometric shapes a log seg
     small_end_diam
     end
 
-    some shapes have additonal flag kwargs to modify the formulas used such as:
+some shapes have additonal kwargs to modify the formula used such as:
 
-        function volume(solid::ParaboloidFrustrum; huber=false, newton = false)
+    function volume(solid::ParaboloidFrustrum; huber=false, newton = false)
+    function volume(solid::ConeFrustrum; newton=false)`
 
-    and
-
-        function volume(solid::ConeFrustrum; newton=false)
-
-    where `huber = true` uses the form ``V=A_mL`` and `newton=true` uses the form ``V=L/6(A_l + 4A_m + A_s)`` otherwise smalian's form ``V=L/2(A_l + A_s)``  is used for ParaboloidFrustrum and ``V=L/3(A_l + \sqrt{A_l*A_s} + A_s`` for ConeFrustrum.
+where `huber = true` uses the form ``V=A_mL`` and `newton=true` uses the form ``V=L/6(A_l + 4A_m + A_s)`` otherwise smalian's form ``V=L/2(A_l + A_s)``  is used for ParaboloidFrustrum and ``V=L/3(A_l + \sqrt{A_l*A_s} + A_s`` for ConeFrustrum.
 
 
 
