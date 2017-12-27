@@ -45,9 +45,17 @@ export limiting_distance
 
 export sdi_chart
 
-export  scribner_volume,
+export  Log, LogSegment,
+        Shape, Cylinder,
+        Paraboloid,
+        Cone,Neiloid,
+        ParaboloidFrustrum,
+        NeiloidFrustrum,
+        ConeFrustrum,
+        area,volume,
+        scribner_volume,
         international_volume,
-        doyle_volume
+        doyle_volume,
 
 #Alphabetic order
 

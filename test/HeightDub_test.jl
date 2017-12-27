@@ -1,9 +1,10 @@
 using DataFrames #is this needed here?
 using Base.Test
 using ForestBiometrics
+#using CSV
 
 datapath = joinpath(@__DIR__, "data")
-
+#df2=CSV.read(joinpath(datapath, "IEsubset_Data_CSV.csv")) ## need to switch over but not working right now
 df=readtable(joinpath(datapath, "IEsubset_Data_CSV.csv"))
 
 # 2 parameter Wyckoff coefficients. Default values for IE variant of FVS
@@ -70,7 +71,7 @@ wyckoff_test=[
 
 #Wyckoff=(x,b)->4.5+exp(b[1]+(b[2]/(x+1)))
 p=HeightDiameter(Wyckoff,FVS_IE)
-wyckoff_out=[calculate_height(p,df[:DBH][i],df[:Species][i]) for i in 1:size(df,1) ]
+wyckoff_out=[calculate_height(p,df[:DBH][i],df[:Species][i]) for i in 1:size(df,1)]
 
 user_eq_test=[
 100.37047284416056

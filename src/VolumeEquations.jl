@@ -6,23 +6,19 @@ const KMETRIC = 0.00007854
 
 abstract type Log end
 
-type LogSegment
+type LogSegment<:Log
 small_end_diam
 large_end_diam
 length
-shape #?
-end
-
-type shape #?
-shape
+#shape #?
 end
 
 abstract type Shape end
 
 function area(diameter)
-    K * diameter^2
+    a=K * diameter^2
+    return a
 end
-
 
 #Table 6.1 form Kershaw et al Forest Mensuration
 #Equations to compute Cubic Volume of Important Solids
@@ -96,10 +92,9 @@ end
 type ParaboloidFrustrum
 length
 large_end_diam
-mid_point_diam #can set to nothing
+mid_point_diam #can set to nothing ( or missing in 0.7.0+?)
 small_end_diam
 end
-#ParaboloidFrustrum(12,14,nothing,10)
 
 
 function volume(solid::ParaboloidFrustrum; huber=false, newton = false)
@@ -131,7 +126,6 @@ function volume(solid::ConeFrustrum; newton=false)
     end
 return V
 end
-
 
 #Equation 6.8
 #V=L/4(Aₗ + cbrt(Aₗ²*Aₛ) + cbrt(Aₗ*Aₛ²) + Aₛ)
