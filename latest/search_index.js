@@ -133,7 +133,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Volume Equations",
     "title": "Calculating the volume of an individual tree",
     "category": "section",
-    "text": "This functionality is under active development and may changeForestBiometrics has functions to calculate log volumes using a variety of scaling rules"
+    "text": "This functionality is under active development and may change, I haven't fully fleshed out what a Julia-esque volume equations API looks like. Suggestions and issues are welcome.ForestBiometrics has functions to calculate log volumes using a variety of scaling rules"
 },
 
 {
@@ -165,7 +165,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Volume Equations",
     "title": "Types",
     "category": "section",
-    "text": "In addition, we introduce two abstract types, VolumeEquation, and MerchSpecs.MerchSpecs is a super type to allow for merchandizing specifications to be stored and referenced by product and some common ones have been predefined.  type Sawtimber<:MerchSpecs\n  std_length\n  trim\n  min_length\n  max_length\n  min_dib\n  end\n  Sawtimber(16.0,0.5,8.0,20.0,6.0)There are also other Types including Log and LogSegment defined in the source but not exported yet, but I haven't fully fleshed out what a Julia-esque volume equations API looks like. Suggestions and issues are welcome."
+    "text": "In addition, we introduce two abstract types, VolumeEquation, and MerchSpecs.MerchSpecs is a super type to allow for merchandizing specifications to be stored and referenced by product and some common ones have been predefined.  type Sawtimber<:MerchSpecs\n  std_length\n  trim\n  min_length\n  max_length\n  min_dib\n  end\n  Sawtimber(16.0,0.5,8.0,20.0,6.0)There are also other types including Log and LogSegment where LogSegment<:Log . I have created a few base types based on the possible geometric shapes a log segment can be and use a volume equation that dispatches on that type.type Cone\nlength\nlarge_end_diam\nend\n\ntype Cylinder\nlength\nlarge_end_diam\nend\n\ntype Paraboloid\nlength\nlarge_end_diam\nend\n\ntype Neiloid\nlength\nlarge_end_diam\nend\n\ntype ParaboloidFrustrum\nlength\nlarge_end_diam\nmid_point_diam #can set to nothing ( or missing in 0.7.0+?)\nsmall_end_diam\nend\n\nsome shapes have additonal flag kwargs to modify the formulas used such as:\n\n    function volume(solid::ParaboloidFrustrum; huber=false, newton = false)\n\nand\n\n    function volume(solid::ConeFrustrum; newton=false)\n\nwhere `huber = true` uses the form ``V=A_mL`` and `newton=true` uses the form ``V=L/6(A_l + 4A_m + A_s)`` otherwise smalian's form ``V=L/2(A_l + A_s)``  is used for ParaboloidFrustrum and ``V=L/3(A_l + \\sqrt{A_l*A_s} + A_s`` for ConeFrustrum.\n\n\n\n\n\n\ntype ConeFrustrum\nlength\nlarge_end_diam\nmid_point_diam #can set to nothing\nsmall_end_diam\nend\n\ntype NeiloidFrustrum\nlength\nlarge_end_diam\nmid_point_diam #can set to nothing\nsmall_end_diam\nendarea() is a helper function to convert between diameter and area using the exported constant K"
 },
 
 {
