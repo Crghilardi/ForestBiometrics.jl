@@ -87,9 +87,7 @@ I have created a few base types based on the possible geometric shapes a log seg
 
         function volume(solid::ConeFrustrum; newton=false)
 
-    where `huber = true` uses the form ``V=A_mL``
-
-    and `newton=true` uses the form ``V=L/6(A_l + 4A_m + A_s)``
+    where `huber = true` uses the form ``V=A_mL`` and `newton=true` uses the form ``V=L/6(A_l + 4A_m + A_s)`` otherwise smalian's form ``V=L/2(A_l + A_s)``  is used for ParaboloidFrustrum and ``V=L/3(A_l + \sqrt{A_l*A_s} + A_s`` for ConeFrustrum.
 
 
 

@@ -55,7 +55,7 @@ export  Log, LogSegment,
         area,volume,
         scribner_volume,
         international_volume,
-        doyle_volume,
+        doyle_volume
 
 #Alphabetic order
 
