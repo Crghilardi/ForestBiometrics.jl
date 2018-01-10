@@ -376,10 +376,10 @@ end
 #SEE IF ADDITIONAL FIBER ABOVE STANDARD LENGTH LOGS CONSTITUTES A FIBER LOG
 fiber_excess=fiber_bole-(n_logs_fiber*m.std_length)
 if fiber_excess>m.min_length
-n_logs_fiber=n_logs_fiber+1
-seg_length[n_logs+n_logs_fiber] = fiber_excess
+    n_logs_fiber=n_logs_fiber+1
+    seg_length[n_logs+n_logs_fiber] = fiber_excess
 end
-
+end
 #TO ASSIGN PRODUCT CLASSES TO EACH LOG SEGMENT IN A SINGLE TREE
 function prod_classify()
 end
