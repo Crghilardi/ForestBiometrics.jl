@@ -149,6 +149,12 @@ function volume(solid::NeiloidFrustrum; newton=false)
 return V
 end
 
+macro LogSegment(a,b,c,d,shape)
+    return :($shape($a,$b,$c,$d))
+end
+
+#@LogSegment(24,12,nothing,8,ParaboloidFrustrum)
+
 #Function to calculate the Scribner scale volume
 #for more info see: http://oak.snr.missouri.edu/forestry_functions/scribnerbfvolume.php
 
@@ -259,8 +265,8 @@ function international_volume(small_end_diam,length)
 #I don't know what a NVEL/Volume Equations API should look like?
 #Various attempts below...
 #introduce abstract super types
- abstract type VolumeEquation end
- abstract type MerchSpecs end
+abstract type VolumeEquation end
+abstract type MerchSpecs end
 
 type Sawtimber<:MerchSpecs
 std_length
@@ -268,8 +274,9 @@ trim
 min_length
 max_length
 min_dib
+stumpht
 end
-#Sawtimber(16.0,0.5,8.0,20.0,6.0)
+s=Sawtimber(16.0,0.5,8.0,20.0,6.0,1.0)
 
 type Fiber<:MerchSpecs
 min_length
@@ -286,7 +293,6 @@ end
 #Pulp(6.0,6.0)
 
 ####work in progress
-
 #bark thickness separate?
 function dib_to_dob() end
 
@@ -298,12 +304,80 @@ end
 function get_height_to_dib(species,dbh,tht,dib)
  end
 
-#PREDICT THE CUBIC-FOOT VOLUME IN A TREE BETWEEN TWO HEIGHTS
-function get_segment_cf()
+#TO BREAK A SAWTIMBER BOLE INTO LOGS AND POPULATE THE SEGMENT LENGTH
+function stem_buck(m::Sawtimber)
+    #DETERMINE LENGTH OF BOLE TO DIVIDE INTO LOGS
+    bole_length=52.9815
+    #bole_length=ht2sawdib-stumpht
+    #DETERMINE THE NUMBER OF FULL STANDARD LENGTH LOGS POSSIBLE
+    n_logs=floor(Int64,bole_length/(m.std_length+m.trim))
+    #POPULATE SEGLEN WITH STANDARD LOG LENGTHS TO START
+    seg_length=zeros(n_logs)
+    for i in 1:n_logs
+        seg_length[i]=m.std_length+m.trim
+    end
+#ADJUST LOG LENGTHS ACCORDING TO BUCKING RULE AND AMOUNT OF SAWTIMBER EXCESS
+    saw_excess=bole_length-n_logs*(m.std_length+m.trim)
+    isaw_excess=floor(Int64,saw_excess/2.0)*2
+    if n_logs == floor(Int64,n_logs/2.0)*2
+        even=true
+    else
+        even=false
+    end
+    if isaw_excess >=2.0 && isaw_excess<6.0       #EXTRA SAWEXCESS IS  2' OR 4'
+        if even
+            if isaw_excess == 2.0
+                 seg_length[n_logs-1]=seg_length[n_logs-1]+2.0 # Add 2' to last log
+             else
+                 seg_length[n_logs-1]=seg_length[n_logs-1]+2.0 # Add 2' to top 2 logs
+                 seg_length[n_logs]=seg_length[n_logs]+2.0
+             end
+        else
+            seg_length[n_logs]=seg_length[n_logs] + isaw_excess #Add 2' or 4' to top log
+         end
+    elseif isaw_excess>=6.0
+        if (saw_excess-m.trim) >= m.min_length
+            n_logs=n_logs+1 # Create whole new log
+            push!(seg_length,isaw_excess+m.trim)
+            #seg_length[n_logs]=isaw_excess+m.trim
+        else
+            n_logs=n_logs+1 # Create new log, split top
+            saw_excess=saw_excess+seg_length[n_logs-1]
+            seg_length[n_logs]=floor(Int64,saw_excess-(2.0*m.trim)/4.0)*2.0+m.trim
+            seg_length[n_logs-1]=floor(saw_excess-seg_length[n_logs]-m.trim/2.0)*2.0+m.trim
+        end
+    end
+    #FAILSAFE TO ENSURE LOGS ARE OF SUFFICIENT LENGTH (B/T MIN SCALE LEN AND MAXLEN)
+    sawtop=m.stumpht
+    for i in 1:n_logs
+        if seg_length[i]<(m.min_length+m.trim)
+            seg_length[i]=0
+        elseif seg_length[i] > (m.max_length+m.trim)
+            seg_length[i]=(m.max_length+m.trim)
+        end
+        #DETERMINE SAWTOP
+        sawtop=seg_length[i]
+    return seg_length
+    end
+end
+stem_buck(s)
+
+
+function stem_buck(m::Fiber)
+    fiber_bole=30
+#DETERMINE THE NUMBER OF FULL STANDARD LENGTH FIBER LOGS POSSIBLE
+n_logs_fiber=floor(Int64,bole_length/m.std_length)
+
+#POPULATE SEGLEN WITH STANDARD LOG LENGTHS TO START
+for i in n_logs+1:n_logs+n_logs_fiber
+    seg_length[i]=m.std_length
 end
 
-#TO BREAK A SAWTIMBER BOLE INTO LOGS AND POPULATE THE SEGMENT LENGTH
-function stem_buck()
+#SEE IF ADDITIONAL FIBER ABOVE STANDARD LENGTH LOGS CONSTITUTES A FIBER LOG
+fiber_excess=fiber_bole-(n_logs_fiber*m.std_length)
+if fiber_excess>m.min_length
+n_logs_fiber=n_logs_fiber+1
+seg_length[n_logs+n_logs_fiber] = fiber_excess
 end
 
 #TO ASSIGN PRODUCT CLASSES TO EACH LOG SEGMENT IN A SINGLE TREE
