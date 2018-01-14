@@ -34,8 +34,12 @@ As previously mentioned, it is my hope that this package will not only provide f
 
 The following Julia packages are used in this package:
 
-Plots.jl
-DataFrames.jl
+Plots.jl and StatPlot.jl and GR.jl for graphics
+
+DataFrames.jl mainly for gingrich chart
+
+OffsetArrays.jl for creating lookup tables for Scribner Decimal C scaling
+
 
 ## Example outputs
 
