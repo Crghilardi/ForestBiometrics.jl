@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/Crghilardi/ForestBiometrics.jl.svg?branch=master)](https://travis-ci.org/Crghilardi/ForestBiometrics.jl)
 [![Build status](https://ci.appveyor.com/api/projects/status/ltey9skqhs40let0/branch/master?svg=true)](https://ci.appveyor.com/project/Crghilardi/forestbiometrics-jl/branch/master)
 [![Coverage Status](https://coveralls.io/repos/github/Crghilardi/ForestBiometrics.jl/badge.svg?branch=master)](https://coveralls.io/github/Crghilardi/ForestBiometrics.jl?branch=master)
-[![GitHub version](https://img.shields.io/github/release/Crghilardi/ForestBiometrics.svg)]()
+
 
 # ForestBiometrics.jl
 A package for various forest mensuration and biometrics functions in Julia
@@ -19,15 +19,11 @@ It is my hope that the package not only ports existing functionality from other 
 
 ## Installation
 
-This is not yet registered as an official Julia package (yet.... working hard on changing that!)
-
-To install a local copy use the `Pkg.clone()` functionality
-
-
-    Pkg.clone("https://github.com/crghilardi/ForestBiometrics.jl")
+Pkg.add("ForestBiometrics")
 
 
 If you are interested in this package and would like to contribute, please submit an issue or pull request.
+
 As previously mentioned, it is my hope that this package will not only provide functionality but also be used to examine Julia in the context of forestry specific use cases.
 
 ## Dependencies
@@ -50,3 +46,9 @@ Gingrich stocking guides
 SDI chart with lines at 100%, 55% and 35% max SDI
 
 <img src="https://raw.githubusercontent.com/Crghilardi/ForestBiometrics.jl/master/examples/SDI_chart_example.png" align="middle"  />
+
+
+Walkthroughs
+
+I am creating a series of short examples walking through topical problems and how this package can be used to solve those problems.
+They can be found under examples/walkthroughs/html.

@@ -1,0 +1,110 @@
+## Intro
+
+For this first example, we'll walk through installing the package,
+loading some included data and then we'll compare 2 sets of coefficients
+for a height diameter model.
+
+Installing package
+
+```julia
+#Pkg.add("ForestBiometrics") #if install needed
+using ForestBiometrics
+```
+
+Next let's add some data included with the package
+
+```julia
+datapath = Pkg.dir("ForestBiometrics", "test", "data")
+using DataFrames
+df=readtable(joinpath(datapath, "IEsubset_Data_CSV.csv"))
+```
+
+For this part we'll need to build dictionaries holding the parameter sets
+for both the Inland Empire Variant and the Kootenai Variant
+height-diameter models. I have the full species list in these, but the example
+data does not include records of all these species.
+
+ForestBiometrics uses a ```String => Array``` dictionary in combination with a
+```HeightDiameter``` type to accommodate model forms with ```1``` through ```N``` coefficients.
+
+```julia
+FVS_KT=Dict{String,Array{Float64}}(
+"WP" => [5.1868 -10.4219],
+"WL" => [5.0545 -8.6187],
+"DF" => [4.8768 -9.1467],
+"GF" => [5.0639 -9.8924],
+"WH" => [4.9273 -8.7275],
+"RC" => [4.8813 -9.6285],
+"LP" => [4.7778 -6.3364],
+"ES" => [5.0796 -10.2015],
+"AF" => [4.9301 -8.8252],
+"PP" => [5.0199 -12.0148],
+"OT" => [4.7795 -9.3174]
+)
+
+FVS_IE=Dict{String,Array{Float64}}(
+"WP"=>[5.19988 -9.26718],
+"WL"=>[4.97407 -6.78347],
+"DF"=>[4.81519 -7.29306],
+"GF"=>[5.00233 -8.19365],
+"WH"=>[4.97331 -8.19730],
+"RC"=>[4.89564 -8.39057],
+"LP"=>[4.62171 -5.32481],
+"ES"=>[4.9219 -8.30289],
+"AF"=>[4.76537 -7.61062],
+"PP"=>[4.9288 -9.32795],
+"MH"=>[4.77951 -9.31743],
+"WB"=>[4.97407 -6.78347],
+"LM"=>[4.19200 -5.16510],
+"LL"=>[4.76537 -7.61062],
+"PI"=>[3.20000 -5.00000],
+"RM"=>[3.20000 -5.00000],
+"PY"=>[4.19200 -5.16510],
+"AS"=>[4.44210 -6.54050],
+"CO"=>[4.44210 -6.54050],
+"MM"=>[4.44210 -6.54050],
+"PB"=>[4.44210 -6.54050],
+"OH"=>[4.44210 -6.54050],
+"OS"=>[4.77951 -9.31743]
+)
+
+#Build a HeightDiameter type with the Wyckoff model form
+#and the respective coefficent sets
+
+IE_hts = HeightDiameter(Wyckoff,FVS_IE)
+KT_hts = HeightDiameter(Wyckoff,FVS_KT)
+```
+
+Wyckoff is a pre-formulated model form, if we run just Wyckoff we can see
+it returns an anonymous function
+
+```{julia;term=true}
+Wyckoff
+```
+
+We can then pass that to the calculate_height() function which along with designating the columns for species and DBH
+will calculate the height for that tree record. No if statements are needed to account for species, since that is achieved internally by the function
+in conjuction with the dictionary.
+
+```julia
+
+df[:pred_htIE]=[calculate_height(IE_hts,df[:DBH][i],df[:Species][i]) for i in 1:size(df,1)]
+df[:pred_htKT]=[calculate_height(KT_hts,df[:DBH][i],df[:Species][i]) for i in 1:size(df,1)]
+
+```
+Once that's done, we can plot the results and see the difference
+between the two parameter sets for the same model form.
+
+The single stand in the example data only has Douglas-Fir and Ponderosa Pine records,
+but we can see that the Kootenai variant would underestimate heights relative to the
+IE variant.
+
+```julia
+
+using StatPlots #need to use StatPlots since we have a DataFrame
+
+@df df scatter(:pred_htIE,:pred_htKT,group=:Species,xlabel="Predicted Height - IE",
+ylabel="Predicted Height - KT")
+Plots.abline!(1,0)
+
+```
