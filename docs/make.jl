@@ -18,11 +18,7 @@ makedocs(
         "Included Datasets"=>Any["data/data.md"]
         ])
 
- deploydocs(#deps = Deps.pip(
-            #"pygments",
-            #"mkdocs",
-            #"mkdocs-material",
-            #"python-markdown-math"),
+ deploydocs(
             deps = nothing,
             branch = "gh-pages",
             latest = "master",

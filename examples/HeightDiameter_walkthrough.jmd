@@ -1,8 +1,17 @@
-## Intro
+## Height Diameter Modeling
 
 For this first example, we'll walk through installing the package,
 loading some included data and then we'll compare 2 sets of coefficients
 for a height diameter model.
+
+Height-diameter models are common throughout forestry and many different forms
+have been developed and parametrized. ForestBiometrics simplifies working with
+these by 1. Cataloging a variety of widely used model forms in ready to use form
+and 2. by allowing a user to quickly and easily change both model form and coefficent sets.
+
+[The documentation](https://crghilardi.github.io/ForestBiometrics.jl/latest/functionality/height_diameter.html) explains how this is done in a bit more detail,
+but for now we'll gloss over those details and work through an example.
+
 
 Installing package
 
@@ -18,16 +27,29 @@ datapath = Pkg.dir("ForestBiometrics", "test", "data")
 using DataFrames
 df=readtable(joinpath(datapath, "IEsubset_Data_CSV.csv"))
 ```
+# Problem Statement
+Consider a user debating between two variants of FVS, the [Inland Empire Variant](https://www.fs.fed.us/fmsc/ftp/fvs/docs/overviews/FVSie_Overview.pdf)
+or the smaller [Kootenai variant](https://www.fs.fed.us/fmsc/ftp/fvs/docs/overviews/FVSkt_Overview.pdf)
 
-For this part we'll need to build dictionaries holding the parameter sets
-for both the Inland Empire Variant and the Kootenai Variant
-height-diameter models. I have the full species list in these, but the example
-data does not include records of all these species.
+Both of these have default behavior that will assign height information to tree records if none are given.
+They both use the Wyckoff model form, but have different coefficient sets for species.
+Ignoring the FVS internal model fitting functionality if some but not all heights are given, a user may wonder
+what the impact of these similar but different model formulations may have.
+
+
+# Using the package
+
+First we need to assemble ```HeightDiameter``` types for both variants with both the Wyckoff model form and coefficient sets.
 
 ForestBiometrics uses a ```String => Array``` dictionary in combination with a
 ```HeightDiameter``` type to accommodate model forms with ```1``` through ```N``` coefficients.
 
 ```julia
+#I have the full species list in these, but the example
+#data does not include records of all these species.
+
+#First, the Kootenai Variant
+
 FVS_KT=Dict{String,Array{Float64}}(
 "WP" => [5.1868 -10.4219],
 "WL" => [5.0545 -8.6187],
@@ -41,6 +63,8 @@ FVS_KT=Dict{String,Array{Float64}}(
 "PP" => [5.0199 -12.0148],
 "OT" => [4.7795 -9.3174]
 )
+
+#Now the Inland Empire variant
 
 FVS_IE=Dict{String,Array{Float64}}(
 "WP"=>[5.19988 -9.26718],
@@ -67,6 +91,18 @@ FVS_IE=Dict{String,Array{Float64}}(
 "OH"=>[4.44210 -6.54050],
 "OS"=>[4.77951 -9.31743]
 )
+```
+
+Wyckoff is a pre-formulated model form included in the package, if we run just Wyckoff we can see
+it returns an anonymous function
+
+```{julia;term=true}
+Wyckoff
+```
+
+So we can now build the type with the dictionaries above and the model form.
+
+```julia
 
 #Build a HeightDiameter type with the Wyckoff model form
 #and the respective coefficent sets
@@ -75,16 +111,9 @@ IE_hts = HeightDiameter(Wyckoff,FVS_IE)
 KT_hts = HeightDiameter(Wyckoff,FVS_KT)
 ```
 
-Wyckoff is a pre-formulated model form, if we run just Wyckoff we can see
-it returns an anonymous function
-
-```{julia;term=true}
-Wyckoff
-```
-
-We can then pass that to the calculate_height() function which along with designating the columns for species and DBH
-will calculate the height for that tree record. No if statements are needed to account for species, since that is achieved internally by the function
-in conjuction with the dictionary.
+We can then pass that to the ```calculate_height()``` function which along with designating the columns for species and DBH
+will calculate the height for that tree record.
+No extra if statements are needed to account for species, since that is achieved internally by the function
 
 ```julia
 
@@ -108,3 +137,6 @@ ylabel="Predicted Height - KT")
 Plots.abline!(1,0)
 
 ```
+
+While a very simplified example, we can start to see how we can swap the parts in and out quickly to accomodate
+regional forms and others without extensive code refactoring.
