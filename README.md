@@ -51,4 +51,7 @@ SDI chart with lines at 100%, 55% and 35% max SDI
 Walkthroughs
 
 I am creating a series of short examples walking through topical problems and how this package can be used to solve those problems.
-They can be found under examples/walkthroughs/html.
+
+Examples include:
+
+[HeightDiameter](https://raw.githubusercontent.com/Crghilardi/ForestBiometrics.jl/master/examples/walkthroughs/HeightDiameter_walkthrough.ipynb)
