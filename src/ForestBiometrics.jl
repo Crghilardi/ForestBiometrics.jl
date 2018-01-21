@@ -10,7 +10,7 @@ using StatPlots
 #end dependencies
 
 export emc
-export sdi
+export sdi, qmd
 export gingrich_chart
 export HeightDiameter, calculate_height
 
