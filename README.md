@@ -55,3 +55,5 @@ I am creating a series of short examples walking through topical problems and ho
 Examples include:
 
 [HeightDiameter](https://github.com/Crghilardi/ForestBiometrics.jl/blob/master/examples/walkthroughs/HeightDiameter_walkthrough.ipynb)
+
+[Stand exam calculations](https://github.com/Crghilardi/ForestBiometrics.jl/blob/master/examples/walkthroughs/stand_calculations.ipynb)
