@@ -6,7 +6,7 @@ const KMETRIC = 0.00007854
 
 abstract type Log end
 
-type LogSegment<:Log
+mutable struct LogSegment<:Log
 small_end_diam
 large_end_diam
 length
@@ -25,7 +25,7 @@ end
 
 # Equation 6.1
 #V=AₗL where Aₗ is the area of the base(large end).
-type Cylinder
+mutable struct Cylinder
 length
 large_end_diam
 end
@@ -39,7 +39,7 @@ end
 #V= 1/2(AₗH)
 #Paraboloid
 
-type Paraboloid
+mutable struct Paraboloid
 length
 large_end_diam
 end
@@ -53,7 +53,7 @@ end
 #V=1/3(AₗL)
 #Cone
 #PREDICT CUBIC FOOT VOLUME FOR A CONIC SEGMENT SUCH AS A STEM TIP
-type Cone
+mutable struct Cone
 length
 large_end_diam
 end
@@ -67,7 +67,7 @@ end
 #V=1/4(AₗL)
 #Neiloid
 
-type Neiloid
+mutable struct Neiloid
 length
 large_end_diam
 end
@@ -89,7 +89,7 @@ end
 #V=L/6(Aₗ + 4*Aₘ + Aₛ)
 #Neiloid,Paraboloid or Conic Frustrum
 
-type ParaboloidFrustrum
+mutable struct ParaboloidFrustrum
 length
 large_end_diam
 mid_point_diam #can set to nothing ( or missing in 0.7.0+?)
@@ -111,7 +111,7 @@ end
 #Equation 6.7
 #V=L/3(Aₗ + sqrt(Aₗ*Aₛ) + Aₛ)
 
-type ConeFrustrum
+mutable struct ConeFrustrum
 length
 large_end_diam
 mid_point_diam #can set to nothing
@@ -130,7 +130,7 @@ end
 #Equation 6.8
 #V=L/4(Aₗ + cbrt(Aₗ²*Aₛ) + cbrt(Aₗ*Aₛ²) + Aₛ)
 
-type NeiloidFrustrum
+mutable struct NeiloidFrustrum
 length
 large_end_diam
 mid_point_diam #can set to nothing
@@ -268,7 +268,7 @@ function international_volume(small_end_diam,length)
 abstract type VolumeEquation end
 abstract type MerchSpecs end
 
-type Sawtimber<:MerchSpecs
+mutable struct Sawtimber<:MerchSpecs
 std_length
 trim
 min_length
@@ -278,7 +278,7 @@ stumpht
 end
 s=Sawtimber(16.0,0.5,8.0,20.0,6.0,1.0)
 
-type Fiber<:MerchSpecs
+mutable struct Fiber<:MerchSpecs
 min_length
 std_length
 min_dib
@@ -286,7 +286,7 @@ min_dbh
 end
 #Fiber(8.0,20.0,2.6,4.6)
 
-type Pulp<:MerchSpecs
+mutable struct Pulp<:MerchSpecs
 min_live_dib #pulp sawlogs
 min_dead_dib #pulp sawlogs
 end
