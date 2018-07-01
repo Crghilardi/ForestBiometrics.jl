@@ -32,7 +32,7 @@ The following Julia packages are used in this package:
 
 Plots.jl and StatPlot.jl and GR.jl for graphics
 
-DataFrames.jl mainly for gingrich chart
+DataFrames.jl mainly for making Gingrich stocking charts
 
 OffsetArrays.jl for creating lookup tables for Scribner Decimal C scaling
 

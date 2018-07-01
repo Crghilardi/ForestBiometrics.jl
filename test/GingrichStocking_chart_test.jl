@@ -1,4 +1,4 @@
-using Base.Test
+using Test
 using Plots
 using StatPlots; gr()
 using ForestBiometrics
