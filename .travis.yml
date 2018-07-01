@@ -17,9 +17,10 @@ script:
   #- julia -e 'cd(Pkg.dir("ForestBiometrics"))'
   - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
   #- julia -e 'ENV["PYTHON"] = ""; Pkg.add("PyPlot"); Pkg.build("PyPlot")'
-  - julia -e 'import Pkg; Pkg.add("GR"); Pkg.add("OffsetArrays")'
+  - julia -e 'import Pkg; Pkg.develop("https://github.com/Crghilardi/ForestBiometrics.jl.git"); Pkg.test("ForestBiometrics"; coverage=true)'
+  #- julia -e 'import Pkg; Pkg.add("GR"); Pkg.add("OffsetArrays")'
   #- julia -e 'Pkg.add("OffsetArrays")'
-  - julia -e 'Pkg.clone(pwd()); Pkg.build("ForestBiometrics"); Pkg.test("ForestBiometrics"; coverage=true)'
+  #- julia -e 'Pkg.clone(pwd()); Pkg.build("ForestBiometrics"); Pkg.test("ForestBiometrics"; coverage=true)'
 
 before_install:
   #- julia -e 'Pkg.add("PyCall"); ENV["PYTHON"]=""; Pkg.build("PyCall")'
