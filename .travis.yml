@@ -4,18 +4,29 @@ os:
   - linux
   - osx
 julia:
-  - 0.7
-  - release
+  #- 0.7
+  #- release
   - nightly
 
 branches:
     only:
       - master
 
+## uncomment the following lines to allow failures on nightly julia
+## (tests will run but not make your overall status red)
+matrix:
+  allow_failures:
+  - julia: 0.6
+
+notifications:
+  email: false
+git:
+  depth: 99999999
+
 ## uncomment the following lines to override the default test script
 script:
   #- julia -e 'cd(Pkg.dir("ForestBiometrics"))'
-  - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
+  #- if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
   #- julia -e 'ENV["PYTHON"] = ""; Pkg.add("PyPlot"); Pkg.build("PyPlot")'
   - julia -e 'import Pkg; Pkg.develop("https://github.com/Crghilardi/ForestBiometrics.jl.git"); Pkg.test("ForestBiometrics"; coverage=true)'
   #- julia -e 'import Pkg; Pkg.add("GR"); Pkg.add("OffsetArrays")'
@@ -32,17 +43,6 @@ after_success:
     - julia -e 'Pkg.add("Documenter")'
     - julia -e 'ENV["DOCUMENTER_DEBUG"] = "true"; cd(Pkg.dir("ForestBiometrics", "docs")); include("make.jl")'
     - julia -e 'cd(Pkg.dir("ForestBiometrics")); include(joinpath("docs", "make.jl"))'
-notifications:
-  email: false
-git:
-  depth: 99999999
-
-## uncomment the following lines to allow failures on nightly julia
-## (tests will run but not make your overall status red)
-matrix:
-  allow_failures:
-  - julia: nightly
-  - julia: release
 
 ## uncomment and modify the following lines to manually install system packages
 #addons:
