@@ -1,6 +1,6 @@
 julia 0.7-beta
 DataFrames 0.11.6
 Plots 0.17.2
-StatPlots 0.7.2
+StatPlots 0.7.2 0.8.1
 OffsetArrays 0.6.0
 GR 0.31.0
