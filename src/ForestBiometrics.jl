@@ -3,9 +3,8 @@
 module ForestBiometrics
 
 #dependencies
-using DataFrames
-using Plots
-using StatPlots
+using RecipesBase
+using OffsetArrays
 
 #end dependencies
 
