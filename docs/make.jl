@@ -22,7 +22,7 @@ makedocs(
             deps = nothing,
             branch = "gh-pages",
             latest = "master",
-            julia ="0.6",
+            julia ="1.0",
             repo = "github.com/Crghilardi/ForestBiometrics.jl.git",
             target = "build",
             osname ="linux",
