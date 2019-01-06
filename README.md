@@ -6,11 +6,12 @@
 # ForestBiometrics.jl
 A package for various forest mensuration and biometrics functions in Julia
 
-
 ForestBiometrics.jl is a package for working with forest measurements data and growth and yield modeling.
 This package was inspired by its R counterpart, the [lmfor package](https://CRAN.R-project.org/package=lmfor) with the addition of equations from the western US. For more info on lmfor, please see http://cs.uef.fi/~lamehtat/rcodes.htm
 
-It is my hope that the package not only ports existing functionality from other langauges, but also showcases the abilities of Julia as a programming language and how concepts like multiple dispatch and metaprogramming can be used to solve domain-specific problems.
+It is my hope that the package not only ports existing functionality from other languages, but also showcases the abilities of Julia as a programming language and how concepts like multiple dispatch and metaprogramming can be used to solve domain-specific problems.
+
+** **Currently in the process of updating since the 1.0.X release, so things may be in flux or broken** **
 
 ## Documentation
 
@@ -19,23 +20,16 @@ It is my hope that the package not only ports existing functionality from other 
 
 ## Installation
 
-Pkg.add("ForestBiometrics")
+`] add ForestBiometrics`
 
-
-If you are interested in this package and would like to contribute, please submit an issue or pull request.
-
-As previously mentioned, it is my hope that this package will not only provide functionality but also be used to examine Julia in the context of forestry specific use cases.
+If you are interested in this package and would like to contribute, feel free to submit an issue or pull request.
 
 ## Dependencies
 
 The following Julia packages are used in this package:
 
-Plots.jl and StatPlot.jl and GR.jl for graphics
-
-DataFrames.jl mainly for making Gingrich stocking charts
-
-OffsetArrays.jl for creating lookup tables for Scribner Decimal C scaling
-
+- PlotRecipes for plotting functionality
+- OffsetArrays.jl for creating lookup tables for Scribner Decimal C scaling
 
 ## Example outputs
 

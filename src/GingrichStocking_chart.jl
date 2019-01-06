@@ -18,8 +18,6 @@ end
   #define parameters
   a = [-0.0507, 0.1698, 0.0317]
   b = [0.175, 0.205, 0.06]
-  ba_ticks= 0:20:160
-  tpa_ticks= 0:50:450
   #QMD lines
   dia = [7, 8, 10, 12, 14, 16, 18, 20, 22]
   #stocking percent horizontal lines

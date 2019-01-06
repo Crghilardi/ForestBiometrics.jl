@@ -1,6 +1,4 @@
 using Test
-using DataFrames
-using StatPlots; gr()
 using ForestBiometrics
 #no idea if i should use this here or in individual scripts?
 

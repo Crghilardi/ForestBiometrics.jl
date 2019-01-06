@@ -1,4 +1,1 @@
-DataFrames
-Plots
-StatPlots
-GR
+RecipesBase

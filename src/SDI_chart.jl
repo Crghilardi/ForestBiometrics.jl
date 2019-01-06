@@ -1,29 +1,50 @@
 ##Reineke SDI chart
-#using Gadfly
-using Plots; gr()
 
-function sdi_chart(tpa,qmd;max_sdi=450)
-sdi=max_sdi
-diarng=collect(1:20)
-tparng=[1,1200]
-maxline=sdi./(((diarng)./10.0).^1.605)
-comp_mortline=maxline*0.55
-crown_closeline=maxline*0.35
+using RecipesBase
 
-myxticks=[1,5,10,50,100,500,1000]
-myyticks=[1,2,5,10,20]
+@userplot sdi_chart
+@recipe function f(dat::sdi_chart ;maxsdi=450)
 
-plot(crown_closeline,diarng,color=:green)
-plot!(comp_mortline,diarng,color=:orange)
-plot!(maxline,diarng,color=:red,
-xscale=:log10,
-yscale=:log10,
-xlabel="Trees Per Acre",
-ylabel="Quadratic Mean Diameter",
-legend=false)
-annotate!([(80, 18, text("35%",10)),
-           (160, 18, text("55%",10)),
-           (320, 18, text("100%",10))
-           ])
-scatter!((tpa,qmd))
-end #end function
+diarng = 1:1:20
+#tparng = [1,1200] #unusued for now, TODO: figure out how to autoscale plot?
+maxline() = maxsdi ./ (diarng ./ 10.0).^1.605
+
+  # plot attributes
+  xlabel --> "Trees Per Acre"
+  ylabel --> "Quadratic Mean Diameter"
+  xticks --> (0:50:450)
+  yticks --> (0:20:200)
+  xscale --> :log10
+  yscale --> :log10
+
+  legend := false
+  primary := false
+
+#max SDI line
+@series begin
+    linecolor := :black
+    maxline()
+end
+
+#competition induced mortality SDI line
+@series begin
+    linecolor := :orange
+    maxline() * 0.55
+end
+
+#crown closure SDI line
+@series begin
+    linecolor := :red
+    maxline() * 0.35
+end
+
+ # the point and the annotations
+ @series begin
+    primary := true
+    seriestype := :scatter
+    #annotations := (100:38:442, 20:10:110, ["$i%" for i in 20:10:110])
+
+    a,b = dat.args
+    [a], [b]
+ end
+end
