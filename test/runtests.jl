@@ -6,7 +6,6 @@ using ForestBiometrics
 
 @testset "ForestStocking" begin include("ForestStocking_test.jl") end
 
-#1/5/19 failing, need to figure out where to add Plots dep?
 @testset "GingrichStocking_chart" begin include("GingrichStocking_chart_test.jl") end
 
 #1/5/19 failing, need to re-do readtable part
@@ -14,7 +13,6 @@ using ForestBiometrics
 
 @testset "LimitingDistance" begin include("LimitingDistance_test.jl") end
 
-#1/5/19 failing, need to figure out where to add Plots dep?
-#@testset "SDI_chart" begin include("SDI_chart_test.jl") end
+@testset "SDI_chart" begin include("SDI_chart_test.jl") end
 
 @testset "VolumeEquations" begin include("VolumeEquations_test.jl") end
