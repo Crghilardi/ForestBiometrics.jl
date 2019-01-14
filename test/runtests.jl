@@ -8,8 +8,7 @@ using ForestBiometrics
 
 @testset "GingrichStocking_chart" begin include("GingrichStocking_chart_test.jl") end
 
-#1/5/19 failing, need to re-do readtable part
-#@testset "HeightDub" begin include("HeightDub_test.jl") end
+@testset "HeightDub" begin include("HeightDub_test.jl") end
 
 @testset "LimitingDistance" begin include("LimitingDistance_test.jl") end
 

@@ -3,8 +3,15 @@ formula::Function
 b
 end
 
+#individual parameters
 function calculate_height(HD::HeightDiameter,dbh,spp)
     return(HD.formula(dbh,get(HD.b,spp,0)))
+end
+
+#separate arrays for dbh and spp
+function calculate_height(HD::HeightDiameter,dbh::AbstractArray,spp::AbstractArray)
+    par=map(x->get(HD.b,x,0),spp) #lookup species coeffs from dict
+    map(HD.formula,dbh,par) #calculate
 end
 
 ##Named Equations

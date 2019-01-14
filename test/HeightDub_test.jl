@@ -1,10 +1,13 @@
 using Test
 using ForestBiometrics
-#using CSV
+using DelimitedFiles
 
 datapath = joinpath(@__DIR__, "data")
-#df2=CSV.read(joinpath(datapath, "IEsubset_Data_CSV.csv")) ## need to switch over but not working right now
-df=readtable(joinpath(datapath, "IEsubset_Data_CSV.csv"))
+dat=readdlm(joinpath(datapath,"IEsubset_Data_CSV.csv"),',')
+
+#select columns from example data
+dbh=dat[2:35,10] #dbh; ignore header
+spp=dat[2:35,9] #species; ignore header
 
 # 2 parameter Wyckoff coefficients. Default values for IE variant of FVS
 FVS_IE=Dict{String,Array{Float64}}(
@@ -70,48 +73,51 @@ wyckoff_test=[
 
 #Wyckoff=(x,b)->4.5+exp(b[1]+(b[2]/(x+1)))
 p=HeightDiameter(Wyckoff,FVS_IE)
-wyckoff_out=[calculate_height(p,df[:DBH][i],df[:Species][i]) for i in 1:size(df,1)]
+wyckoff_out= calculate_height(p,dbh,spp)
+
+@test isapprox(wyckoff_out, wyckoff_test)
+
+#end test 1
 
 user_eq_test=[
-100.37047284416056
-61.3504314548922
-11.319484421435718
-11.991848965935239
-71.56773647020071
-75.48849751905001
-4.662859967018998
-38.13187380388209
-86.57926895263638
-89.09331657177808
-83.29702963805494
-82.02991681961564
-59.3635942426874
-92.24130803769208
-80.79924608605168
-95.99589412836896
-89.52703551776979
-73.04225222668002
-95.88342114290104
-59.385027822318165
-4.662859967018998
-4.662859967018998
-97.69440542934592
-96.76176794990653
-106.49848706273958
-75.82474075633411
-100.37047284416056
-105.46032414620028
-92.7916874489734
-78.84582366172639
-79.61824480322522
-77.2266135618811
-92.7916874489734
-86.20806500491511]
+5.50000110437066
+5.50000077727861
+5.50000025616043
+5.50000027222188
+5.50000085504705
+5.50000088557174
+5.49997579696978
+5.50000059480051
+5.50000097615539
+5.50000099792679
+5.50000094851992
+5.50002825335774
+5.50002185801763
+5.50003169790446
+5.50000092800344
+5.50003314012292
+5.50000100174185
+5.50000086646161
+5.50003309510479
+5.50000076242647
+5.49997579696978
+5.49997579696978
+5.50003383536612
+5.50003344996446
+5.50000117082406
+5.50000088821741
+5.50000110437066
+5.50000115899896
+5.50003190202163
+5.50002728005371
+5.50002751279364
+5.50002679851972
+5.50003190202163
+5.50002959423972]
 
 p2=HeightDiameter((x,b)->4.5+x^b[1]^b[2],FVS_IE)
 
-user_eq_out=[calculate_height(p,df[:DBH][i],df[:Species][i]) for i in 1:size(df,1) ]
+user_eq_out = calculate_height(p2,dbh,spp)
 
-
-@test isapprox(wyckoff_out, wyckoff_test)
 @test isapprox(user_eq_out, user_eq_test)
+#end test 2
