@@ -1,17 +1,30 @@
-#__precompile__(true) #needed?
-
 module ForestBiometrics
 
-#dependencies
-using RecipesBase
-using OffsetArrays
+const K = 0.005454154
+const KMETRIC = 0.00007854
 
-#end dependencies
+struct Metric end
+const metric = Metric()
 
-export emc
-export sdi, qmd
+include("tree.jl")
+include("stand.jl")
+include("density.jl")
+include("charts.jl")
+include("height.jl")
+
+export Tree
+export Stand
+
+export basal_area, basal_area!
+export trees_per_area, trees_per_area!
+export qmd, qmd!
+export sdi
+
 export gingrich_chart
-export HeightDiameter, calculate_height
+export reineke_chart
+
+export HeightModel
+export estimate_height, estimate_height!
 
 export Curtis,
 Michailoff,
@@ -38,33 +51,4 @@ Ratkowsky,
 Sibbesen,
 Weibull
 
-export K, KMETRIC,VolumeEquation, MerchSpecs, Sawtimber, Pulp, Fiber
-
-export limiting_distance
-
-export sdi_chart
-
-export  Log, LogSegment,
-        Shape, Cylinder,
-        Paraboloid,
-        Cone,Neiloid,
-        ParaboloidFrustrum,
-        NeiloidFrustrum,
-        ConeFrustrum,
-        area,volume,
-        scribner_volume,
-        international_volume,
-        doyle_volume
-
-#Alphabetic order
-
-include("EquilibriumMoistureContent.jl")
-include("ForestStocking.jl")
-include("GingrichStocking_chart.jl")
-include("HeightDub.jl")
-include("LimitingDistance.jl")
-include("SDI_chart.jl")
-include("VolumeEquations.jl")
-
 end
-#end module
