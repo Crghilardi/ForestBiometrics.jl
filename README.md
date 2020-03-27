@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Crghilardi/ForestBiometrics.jl.svg?branch=master)](https://travis-ci.org/Crghilardi/ForestBiometrics.jl)
+![Run CI on master](https://github.com/Crghilardi/ForestBiometrics.jl/workflows/Run%20CI%20on%20master/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/Crghilardi/ForestBiometrics.jl/badge.svg?branch=master)](https://coveralls.io/github/Crghilardi/ForestBiometrics.jl?branch=master)
 
 
