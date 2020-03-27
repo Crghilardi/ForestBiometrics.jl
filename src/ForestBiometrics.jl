@@ -1,70 +1,54 @@
-#__precompile__(true) #needed?
-
 module ForestBiometrics
 
-#dependencies
-using RecipesBase
-using OffsetArrays
+const K = 0.005454154
+const KMETRIC = 0.00007854
 
-#end dependencies
+struct Metric end
+const metric = Metric()
 
-export emc
-export sdi, qmd
+include("tree.jl")
+include("stand.jl")
+include("density.jl")
+include("charts.jl")
+include("height.jl")
+
+export Tree
+export Stand
+
+export basal_area, basal_area!
+export trees_per_area, trees_per_area!
+export qmd, qmd!
+export sdi
+
 export gingrich_chart
-export HeightDiameter, calculate_height
+export reineke_chart
 
-export Curtis,
-Michailoff,
-Meyer,
-Micment,
-Micment2,
-Naslund,
-Naslund2,
-Naslund3,
-Naslund4,
-Power,
-Wyckoff
+export HeightModel
+export estimate_height, estimate_height!
+
+export curtis,
+michailoff,
+meyer,
+micment,
+micment2,
+naslund,
+naslund2,
+naslund3,
+naslund4,
+power,
+wyckoff
 
 #3 parameter equations, mainly from LMFOR R package
 #sorted alphabetically
-export Chapman,
-Gompertz,
-HossfeldIV,
-Korf,
-Logistic,
-Monserud,
-Prodan,
-Ratkowsky,
-Sibbesen,
-Weibull
-
-export K, KMETRIC,VolumeEquation, MerchSpecs, Sawtimber, Pulp, Fiber
-
-export limiting_distance
-
-export sdi_chart
-
-export  Log, LogSegment,
-        Shape, Cylinder,
-        Paraboloid,
-        Cone,Neiloid,
-        ParaboloidFrustrum,
-        NeiloidFrustrum,
-        ConeFrustrum,
-        area,volume,
-        scribner_volume,
-        international_volume,
-        doyle_volume
-
-#Alphabetic order
-
-include("EquilibriumMoistureContent.jl")
-include("ForestStocking.jl")
-include("GingrichStocking_chart.jl")
-include("HeightDub.jl")
-include("LimitingDistance.jl")
-include("SDI_chart.jl")
-include("VolumeEquations.jl")
+export chapman,
+gompertz,
+hossfeldIV,
+korf,
+logistic,
+monserud,
+prodan,
+ratkowsky,
+sibbesen,
+weibull
 
 end
-#end module

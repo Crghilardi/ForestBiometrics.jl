@@ -1,3 +1,0 @@
-RecipesBase
-Plots
-GR
