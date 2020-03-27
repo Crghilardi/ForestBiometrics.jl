@@ -38,7 +38,7 @@ FVS_IE=Dict{String,Array{Float64}}(
 "OS"=>[4.77951	-9.31743] )
 
 #using Wyckoff=(x,b)->4.5+exp(b[1]+(b[2]/(x+1)))
-wyk = HeightModel(Wyckoff,FVS_IE)
+wyk = HeightModel(wyckoff,FVS_IE)
 
 wyckoff_out= [estimate_height(i,wyk) for i in tl]
 
@@ -77,8 +77,6 @@ wyckoff_test=[
 77.22661356
 92.79168745
 86.208065]
-
-
 
 @test isapprox(wyckoff_out, wyckoff_test)
 

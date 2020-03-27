@@ -26,29 +26,29 @@ export reineke_chart
 export HeightModel
 export estimate_height, estimate_height!
 
-export Curtis,
-Michailoff,
-Meyer,
-Micment,
-Micment2,
-Naslund,
-Naslund2,
-Naslund3,
-Naslund4,
-Power,
-Wyckoff
+export curtis,
+michailoff,
+meyer,
+micment,
+micment2,
+naslund,
+naslund2,
+naslund3,
+naslund4,
+power,
+wyckoff
 
 #3 parameter equations, mainly from LMFOR R package
 #sorted alphabetically
-export Chapman,
-Gompertz,
-HossfeldIV,
-Korf,
-Logistic,
-Monserud,
-Prodan,
-Ratkowsky,
-Sibbesen,
-Weibull
+export chapman,
+gompertz,
+hossfeldIV,
+korf,
+logistic,
+monserud,
+prodan,
+ratkowsky,
+sibbesen,
+weibull
 
 end
