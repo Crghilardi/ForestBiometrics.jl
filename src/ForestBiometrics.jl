@@ -11,6 +11,7 @@ include("stand.jl")
 include("density.jl")
 include("charts.jl")
 include("height.jl")
+include("expansion.jl")
 
 export Tree
 export Stand
@@ -50,5 +51,9 @@ prodan,
 ratkowsky,
 sibbesen,
 weibull
+
+export /,
+collapse, collapse!,
+expand, expand!
 
 end
