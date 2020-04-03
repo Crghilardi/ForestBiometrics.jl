@@ -73,41 +73,45 @@ function gingrich_chart(s::Stand)
     gingrich_chart(s.trees_per_area,s.basal_area)
 end
 
-
 ##Reineke SDI chart 
 @userplot reineke_chart
-@recipe function f(dat::reineke_chart ;maxsdi=450)
-diarng = 1:1:20
+@recipe function f(dat::reineke_chart ; maxsdi=450)
+diarng = 1:1:50
 #tparng = [1,1200] #unusued for now, TODO: figure out how to autoscale plot?
 maxline() = maxsdi ./ (diarng ./ 10.0).^1.605
 
   # plot attributes
   xlabel --> "Trees Per Acre"
   ylabel --> "Quadratic Mean Diameter"
-  xticks --> (0:50:450)
-  yticks --> (0:20:200)
+  
+  xticks --> [1,5,10,50,100,500,1000]
+  yticks --> [1,2,5,10,20]
+
   xscale --> :log10
   yscale --> :log10
 
   legend := false
   primary := false
+  formatter --> x -> string(convert(Int,round(x,digits=2)))
+
+  title --> "Maximum SDI of $maxsdi"
 
 #max SDI line
 @series begin
     linecolor := :black
-    maxline()
+    maxline(), diarng
 end
 
 #competition induced mortality SDI line
 @series begin
     linecolor := :orange
-    maxline() * 0.55
+    maxline() * 0.55, diarng
 end
 
 #crown closure SDI line
 @series begin
     linecolor := :red
-    maxline() * 0.35
+    maxline() * 0.35, diarng
 end
 
  # the point and the annotations
