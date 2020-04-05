@@ -126,11 +126,3 @@ SDI chart with lines at 100%, 55% and 35% max SDI
 `#or can define a max sdi explicity reineke_chart(stand; maxsdi = 250)` 
 
 <img src="https://raw.githubusercontent.com/Crghilardi/ForestBiometrics.jl/master/examples/SDI_chart_example.png" align="middle"  />
-
-
-## Dependencies
-
-The following Julia packages are used in this package:
-
-- PlotRecipes for plotting functionality
-- OffsetArrays.jl for creating lookup tables for Scribner Decimal C scaling
